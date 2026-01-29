@@ -1,0 +1,17 @@
+*.log
+# 忽略数据目录
+tf/
+output/
+# 忽略特定的数据文件
+*.dat
+*.o
+*.log
+*.x
+*.bin
+*.dat
+*.o
+*.x
+*.bin
+*.log
+*.npy
+
