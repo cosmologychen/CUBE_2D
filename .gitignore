@@ -14,4 +14,5 @@ output/
 *.bin
 *.log
 *.npy
+*.mod
 .DS_Store
