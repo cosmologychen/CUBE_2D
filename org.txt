@@ -1,0 +1,4209 @@
+ 
+ CUBE run on   12 cores
+   call geometry
+   omp_get_max_threads() =          12
+   omp_get_num_procs()   =          64
+   omp_set_threads()     =          12
+ read z
+ mkdir -p /mnt/18T/output_2D/lc/3000_256_org/
+ read s_a_tau_H
+ 
+ checkpoint information
+      200.0000     < CDM initial conditions
+      20.00000    
+      10.00000    
+      5.000000    
+      3.000000    
+      2.990300    
+      2.752300    
+      2.528500    
+      2.318000    
+      2.120100    
+      1.933900    
+      1.758900    
+      1.594300    
+      1.439600    
+      1.294100    
+      1.157200    
+      1.028500    
+     0.9075000    
+     0.7937000    
+     0.6867000    
+     0.5861000    
+     0.4915000    
+     0.4025000    
+     0.3189000    
+     0.2402000    
+     0.1662000    
+     9.6600004E-02
+     4.5000002E-02
+     3.1199999E-02
+     0.0000000E+00
+   initialize Green's functions
+     nc,ngt,ng =     64     96    256
+   Initialize 2D_Green's function
+     mesh =     64
+     n1,n2 =     33     64
+     apm_soft, apm_range =   3.500000      0.0000000E+00
+     gridsize =   4.000000    
+     n_int =      2
+     elapsed time =  2.7600000E-02 secs
+ 
+   Initialize 2D_Green's function
+     mesh =     96
+     n1,n2 =     49     96
+     apm_soft, apm_range =   3.500000       14.00000    
+     gridsize =   1.000000    
+     n_int =      2
+     elapsed time =  8.7000001E-03 secs
+ 
+   162.5664     -1.0788569E-02
+   47.38112     -4.4953171E-02
+   create fft plan
+     sfftw_init_threads status           1
+     elapsed time =  0.0000000E+00 secs
+   initialize PP neighbors
+ 
+ particle_initialization
+   at redshift   200.0000    
+   read                 65536  particles
+   np           =                 65536
+   mass_p_cdm   =   1.000000    
+   vsim2phys    =   183499.5      (km/s)/(1.0)
+   elapsed time =  0.0000000E+00 secs
+ 
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  4.9751243E-03  0.0000000E+00  0.0000000E+00
+ | timestep        =                     0
+ | dt PM123,PP     =   9999.000       9999.000       9999.000    
+ | dt v            =   1033.060    
+ | cur_checkpoint  =      1   200.0000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   183499.5     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  9.1889204E-05 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =  1.3939172E-02
+ ------------------------------------------------------------------------------
+ ---------- starting main loop ----------
+ 
+ -------------------------------------------------------
+ timestep    :                     1
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   200.0000       195.2077    
+ a         :  4.9751243E-03  5.0358824E-03  5.0966400E-03
+ expansion :  2.3842338E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   9999.000    
+ dt_pm2    :   9999.000    
+ dt_pp     :   9999.000    
+ dt_vmax   :   1033.060    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   2.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =  0.3709095    
+   vmax =  6.8167364E-03  7.2276448E-03
+   real time =  3.4000000E-03 secs
+ 
+ PM2
+   vmax =  6.8825455E-03  7.2904807E-03
+   f2max =  0.2516272    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  6.9170706E-03  7.3216134E-03
+   f2max =  0.1128131    
+   real time =  6.8000001E-03 secs
+ 
+ vmax  6.9170706E-03  7.3216134E-03
+ total elapsed time =  1.7500000E-02  1.7500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_0.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     2
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   195.2077       190.4154    
+ a         :  5.0966400E-03  5.1604407E-03  5.2242409E-03
+ expansion :  2.4424788E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   96.01553    
+ dt_pm2    :   105.7959    
+ dt_pp     :   25.85822    
+ dt_vmax   :   1720.932    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =  0.5132453    
+   vmax =  6.9997129E-03  7.4232388E-03
+   real time =  3.1000001E-03 secs
+ 
+ PM2
+   vmax =  7.0789331E-03  7.4988347E-03
+   f2max =  0.3474725    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  7.1207141E-03  7.5365156E-03
+   f2max =  0.1562113    
+   real time =  6.6000000E-03 secs
+ 
+ vmax  7.1207141E-03  7.5365156E-03
+ total elapsed time =  1.5699999E-02  1.5699999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_1.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     3
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   190.4154       185.6231    
+ a         :  5.2242409E-03  5.2913181E-03  5.3583947E-03
+ expansion :  2.5036203E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   87.45236    
+ dt_pm2    :   96.41014    
+ dt_pp     :   23.54804    
+ dt_vmax   :   1671.860    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =  0.6840635    
+   vmax =  7.2184582E-03  7.6567861E-03
+   real time =  3.1000001E-03 secs
+ 
+ PM2
+   vmax =  7.3121078E-03  7.7461074E-03
+   f2max =  0.4620391    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =  7.3617701E-03  7.7909036E-03
+   f2max =  0.2083779    
+   real time =  6.3999998E-03 secs
+ 
+ vmax  7.3617701E-03  7.7909036E-03
+ total elapsed time =  1.5500000E-02  1.5500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_2.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     4
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   185.6231       180.8307    
+ a         :  5.3583947E-03  5.4290076E-03  5.4996205E-03
+ expansion :  2.5679164E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   80.37855    
+ dt_pm2    :   88.66344    
+ dt_pp     :   21.63871    
+ dt_vmax   :   1617.271    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =  0.8871897    
+   vmax =  7.4758432E-03  7.9313591E-03
+   real time =  3.1000001E-03 secs
+ 
+ PM2
+   vmax =  7.5850887E-03  8.0355145E-03
+   f2max =  0.5973307    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =  7.6433429E-03  8.0880597E-03
+   f2max =  0.2703137    
+   real time =  6.0999999E-03 secs
+ 
+ vmax  7.6433429E-03  8.0880597E-03
+ total elapsed time =  1.5000000E-02  1.5000000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_3.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     5
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   180.8307       176.0384    
+ a         :  5.4996205E-03  5.5740564E-03  5.6484924E-03
+ expansion :  2.6356008E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   74.35871    
+ dt_pm2    :   82.08849    
+ dt_pp     :   20.01700    
+ dt_vmax   :   1557.852    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1.127048    
+   vmax =  7.7751460E-03  8.2504600E-03
+   real time =  3.0000000E-03 secs
+ 
+ PM2
+   vmax =  7.9013184E-03  8.3707199E-03
+   f2max =  0.7557250    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =  7.9689911E-03  8.4317559E-03
+   f2max =  0.3434090    
+   real time =  6.0999999E-03 secs
+ 
+ vmax  7.9689911E-03  8.4317559E-03
+ total elapsed time =  1.5100000E-02  1.5100000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_4.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     6
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   176.0384       171.2461    
+ a         :  5.6484924E-03  5.7270704E-03  5.8056479E-03
+ expansion :  2.7069457E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   69.12338    
+ dt_pm2    :   76.38702    
+ dt_pp     :   18.60748    
+ dt_vmax   :   1494.351    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1.408388    
+   vmax =  8.1201289E-03  8.6181173E-03
+   real time =  3.1000001E-03 secs
+ 
+ PM2
+   vmax =  8.2647521E-03  8.7559475E-03
+   f2max =  0.9400948    
+   real time =  1.3000000E-03 secs
+ 
+ PP
+   vmax =  8.3427997E-03  8.8263284E-03
+   f2max =  0.4292744    
+   real time =  6.2000002E-03 secs
+ 
+ vmax  8.3427997E-03  8.8263284E-03
+ total elapsed time =  1.5000000E-02  1.5000000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_5.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     7
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   171.2461       166.4537    
+ a         :  5.8056479E-03  5.8887233E-03  5.9717987E-03
+ expansion :  2.7822573E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   64.49846    
+ dt_pm2    :   71.35707    
+ dt_pp     :   17.36106    
+ dt_vmax   :   1427.547    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1.737393    
+   vmax =  8.5151019E-03  9.0389615E-03
+   real time =  3.1999999E-03 secs
+ 
+ PM2
+   vmax =  8.6799189E-03  9.1960439E-03
+   f2max =   1.153858    
+   real time =  1.9000000E-03 secs
+ 
+ PP
+   vmax =  8.7694554E-03  9.2767552E-03
+   f2max =  0.5299281    
+   real time =  2.0300001E-02 secs
+ 
+ vmax  8.7694554E-03  9.2767552E-03
+ total elapsed time =  3.0400001E-02  3.0400001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_6.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     8
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   166.4537       161.6614    
+ a         :  5.9717987E-03  6.0597695E-03  6.1477399E-03
+ expansion :  2.8618863E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   60.35470    
+ dt_pm2    :   66.85710    
+ dt_pp     :   16.24282    
+ dt_vmax   :   1358.234    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   2.121535    
+   vmax =  8.9650210E-03  9.5183104E-03
+   real time =  3.1999999E-03 secs
+ 
+ PM2
+   vmax =  9.1520343E-03  9.6965851E-03
+   f2max =   1.401086    
+   real time =  1.9000000E-03 secs
+ 
+ PP
+   vmax =  9.2543624E-03  9.7887656E-03
+   f2max =  0.6544145    
+   real time =  2.2900000E-02 secs
+ 
+ vmax  9.2543624E-03  9.7887656E-03
+ total elapsed time =  4.7800001E-02  4.7800001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_7.bin
+ 
+ -------------------------------------------------------
+ timestep    :                     9
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   161.6614       156.8691    
+ a         :  6.1477399E-03  6.2410515E-03  6.3343630E-03
+ expansion :  2.9461985E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   56.59859    
+ dt_pm2    :   62.78442    
+ dt_pp     :   15.18920    
+ dt_vmax   :   1287.190    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   2.569825    
+   vmax =  9.4755962E-03  1.0062287E-02
+   real time =  2.1900000E-02 secs
+ 
+ PM2
+   vmax =  9.6871052E-03  1.0263989E-02
+   f2max =   1.686525    
+   real time =  1.1600000E-02 secs
+ 
+ PP
+   vmax =  9.8037468E-03  1.0368958E-02
+   f2max =  0.8159523    
+   real time =  4.7499999E-02 secs
+ 
+ vmax  9.8037468E-03  1.0368958E-02
+ total elapsed time =  8.6499996E-02  8.6499996E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_8.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    10
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   156.8691       152.0767    
+ a         :  6.3343630E-03  6.4335172E-03  6.5326714E-03
+ expansion :  3.0356431E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   53.16079    
+ dt_pm2    :   59.06349    
+ dt_pp     :   14.16384    
+ dt_vmax   :   1215.165    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  1.4500000E-02 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   3.093179    
+   vmax =  1.0053410E-02  1.0677953E-02
+   real time =  1.6700000E-02 secs
+ 
+ PM2
+   vmax =  1.0292062E-02  1.0905674E-02
+   f2max =   2.015792    
+   real time =  2.2000000E-03 secs
+ 
+ PP
+   vmax =  1.0424815E-02  1.1024974E-02
+   f2max =   1.013430    
+   real time =  1.9099999E-02 secs
+ 
+ vmax  1.0424815E-02  1.1024974E-02
+ total elapsed time =  5.7799999E-02  5.7799999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_9.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    11
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   152.0767       147.2844    
+ a         :  6.5326714E-03  6.6382349E-03  6.7437985E-03
+ expansion :  3.1306837E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   49.98857    
+ dt_pm2    :   55.63660    
+ dt_pp     :   13.21459    
+ dt_vmax   :   1142.860    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   3.704800    
+   vmax =  1.0706085E-02  1.1373488E-02
+   real time =  4.1999999E-03 secs
+ 
+ PM2
+   vmax =  1.0974932E-02  1.1630235E-02
+   f2max =   2.395345    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  1.1125929E-02  1.1765669E-02
+   f2max =   1.257556    
+   real time =  7.1000000E-03 secs
+ 
+ vmax  1.1125929E-02  1.1765669E-02
+ total elapsed time =  1.8500000E-02  1.8500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_10.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    12
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   147.2844       142.4920    
+ a         :  6.7437985E-03  6.8564131E-03  6.9690277E-03
+ expansion :  3.2318581E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   47.04123    
+ dt_pm2    :   52.45995    
+ dt_pp     :   12.32588    
+ dt_vmax   :   1070.912    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   4.420625    
+   vmax =  1.1442465E-02  1.2158381E-02
+   real time =  4.1000000E-03 secs
+ 
+ PM2
+   vmax =  1.1745041E-02  1.2447658E-02
+   f2max =   2.832799    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  1.1916785E-02  1.2601289E-02
+   f2max =   1.560642    
+   real time =  6.6999998E-03 secs
+ 
+ vmax  1.1916785E-02  1.2601289E-02
+ total elapsed time =  1.7300000E-02  1.7300000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_11.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    13
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   142.4920       137.6997    
+ a         :  6.9690277E-03  7.0894244E-03  7.2098216E-03
+ expansion :  3.3398036E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   44.28706    
+ dt_pm2    :   49.49870    
+ dt_pp     :   11.49084    
+ dt_vmax   :   999.8976    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5.260180    
+   vmax =  1.2272815E-02  1.3043625E-02
+   real time =  4.0000002E-03 secs
+ 
+ PM2
+   vmax =  1.2613223E-02  1.3369532E-02
+   f2max =   3.336875    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  1.2808841E-02  1.3543956E-02
+   f2max =   1.940971    
+   real time =  6.6999998E-03 secs
+ 
+ vmax  1.2808841E-02  1.3543956E-02
+ total elapsed time =  1.7200001E-02  1.7200001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_12.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    14
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   137.6997       132.9073    
+ a         :  7.2098216E-03  7.3388359E-03  7.4678506E-03
+ expansion :  3.4551971E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   41.70043    
+ dt_pm2    :   46.72569    
+ dt_pp     :   10.70079    
+ dt_vmax   :   930.3042    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6.247065    
+   vmax =  1.3209262E-02  1.4042227E-02
+   real time =  4.1999999E-03 secs
+ 
+ PM2
+   vmax =  1.3592283E-02  1.4409579E-02
+   f2max =   3.917643    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  1.3815485E-02  1.4607780E-02
+   f2max =   2.422585    
+   real time =  6.8999999E-03 secs
+ 
+ vmax  1.3815485E-02  1.4607780E-02
+ total elapsed time =  1.7300000E-02  1.7300000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_13.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    15
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   132.9073       128.1150    
+ a         :  7.4678506E-03  7.6064426E-03  7.7450345E-03
+ expansion :  3.5788603E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   39.26120    
+ dt_pm2    :   44.11908    
+ dt_pp     :   9.950454    
+ dt_vmax   :   862.5540    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7.410300    
+   vmax =  1.4265979E-02  1.5169349E-02
+   real time =  4.1000000E-03 secs
+ 
+ PM2
+   vmax =  1.4697216E-02  1.5583836E-02
+   f2max =   4.586596    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  1.4952496E-02  1.5809381E-02
+   f2max =   3.043015    
+   real time =  7.0000002E-03 secs
+ 
+ vmax  1.4952496E-02  1.5809381E-02
+ total elapsed time =  1.7500000E-02  1.7500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_14.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    16
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   128.1150       123.3226    
+ a         :  7.7450345E-03  7.8943111E-03  8.0435881E-03
+ expansion :  3.7116975E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   36.95272    
+ dt_pm2    :   41.66130    
+ dt_pp     :   9.232289    
+ dt_vmax   :   796.9951    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   8.785343    
+   vmax =  1.5459668E-02  1.6442876E-02
+   real time =  4.1000000E-03 secs
+ 
+ PM2
+   vmax =  1.5945707E-02  1.6911257E-02
+   f2max =   5.356728    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  1.6238753E-02  1.7168460E-02
+   f2max =   3.853271    
+   real time =  6.8000001E-03 secs
+ 
+ vmax  1.6238753E-02  1.7168460E-02
+ total elapsed time =  1.7100001E-02  1.7100001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_15.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    17
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   123.3226       118.5303    
+ a         :  8.0435881E-03  8.2048355E-03  8.3660828E-03
+ expansion :  3.8547870E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   34.76157    
+ dt_pm2    :   39.33817    
+ dt_pp     :   8.543025    
+ dt_vmax   :   733.9039    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   10.41596    
+   vmax =  1.6810313E-02  1.7884027E-02
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  1.7358951E-02  1.8414386E-02
+   f2max =   6.284457    
+   real time =  1.8000000E-03 secs
+ 
+ PP
+   vmax =  1.7696774E-02  1.8708482E-02
+   f2max =   5.073492    
+   real time =  7.1000000E-03 secs
+ 
+ vmax  1.7696774E-02  1.8708482E-02
+ total elapsed time =  1.8200001E-02  1.8200001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_16.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    18
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   118.5303       113.7379    
+ a         :  8.3660828E-03  8.5407998E-03  8.7155169E-03
+ expansion :  4.0093333E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   32.67657    
+ dt_pm2    :   37.07612    
+ dt_pp     :   7.822841    
+ dt_vmax   :   673.4913    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   12.35618    
+   vmax =  1.8341744E-02  1.9518103E-02
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  1.8962272E-02  2.0120177E-02
+   f2max =   7.541497    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  1.9353760E-02  2.0457571E-02
+   f2max =   6.865048    
+   real time =  6.5000001E-03 secs
+ 
+ vmax  1.9353760E-02  2.0457571E-02
+ total elapsed time =  1.7300000E-02  1.7300000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_17.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    19
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   113.7379       108.9455    
+ a         :  8.7155169E-03  8.9054657E-03  9.0954145E-03
+ expansion :  4.1768055E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   30.68851    
+ dt_pm2    :   34.72023    
+ dt_pp     :   7.109123    
+ dt_vmax   :   615.9089    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   14.67290    
+   vmax =  2.0082740E-02  2.1375455E-02
+   real time =  4.1999999E-03 secs
+ 
+ PM2
+   vmax =  2.0786304E-02  2.2061074E-02
+   f2max =   9.058538    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  2.1242918E-02  2.2449709E-02
+   f2max =   9.613219    
+   real time =  6.3000000E-03 secs
+ 
+ vmax  2.1242918E-02  2.2449709E-02
+ total elapsed time =  1.6799999E-02  1.6799999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_18.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    20
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   108.9455       104.1531    
+ a         :  9.0954145E-03  9.3026776E-03  9.5099397E-03
+ expansion :  4.3588668E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   28.78982    
+ dt_pm2    :   32.47905    
+ dt_pp     :   6.400010    
+ dt_vmax   :   561.2545    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   17.44995    
+   vmax =  2.2068411E-02  2.3492798E-02
+   real time =  4.1999999E-03 secs
+ 
+ PM2
+   vmax =  2.2868332E-02  2.4275953E-02
+   f2max =   10.89043    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  2.3405120E-02  2.4725733E-02
+   f2max =   14.13262    
+   real time =  6.5000001E-03 secs
+ 
+ vmax  2.3405120E-02  2.4725733E-02
+ total elapsed time =  1.7000001E-02  1.7000001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_19.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    21
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   104.1531       99.36076    
+ a         :  9.5099397E-03  9.7369971E-03  9.9640545E-03
+ expansion :  4.5575276E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   26.97389    
+ dt_pm2    :   30.34806    
+ dt_pp     :   5.686782    
+ dt_vmax   :   509.5905    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   20.79270    
+   vmax =  2.4341926E-02  2.5914341E-02
+   real time =  4.3000001E-03 secs
+ 
+ PM2
+   vmax =  2.5253318E-02  2.6810691E-02
+   f2max =   13.07659    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  2.5890416E-02  2.7334293E-02
+   f2max =   22.29304    
+   real time =  6.6999998E-03 secs
+ 
+ vmax  2.5890416E-02  2.7334293E-02
+ total elapsed time =  1.7300000E-02  1.7300000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_20.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    22
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   99.36076       94.56836    
+ a         :  9.9640545E-03  1.0213885E-02  1.0463715E-02
+ expansion :  4.7751665E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   25.23515    
+ dt_pm2    :   28.33740    
+ dt_pp     :   4.959882    
+ dt_vmax   :   460.9594    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   24.83472    
+   vmax =  2.6956128E-02  2.8692931E-02
+   real time =  4.6999999E-03 secs
+ 
+ PM2
+   vmax =  2.7996298E-02  2.9720070E-02
+   f2max =   15.64678    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  2.8761070E-02  3.0333802E-02
+   f2max =   54.19838    
+   real time =  6.3999998E-03 secs
+ 
+ vmax  2.8761070E-02  3.0333802E-02
+ total elapsed time =  2.1000000E-02  2.1000000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_21.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    23
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   94.56836       89.77596    
+ a         :  1.0463715E-02  1.0739924E-02  1.1016133E-02
+ expansion :  5.0146360E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   23.56872    
+ dt_pm2    :   26.45419    
+ dt_pp     :   3.878235    
+ dt_vmax   :   415.3782    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   29.74600    
+   vmax =  2.9976688E-02  3.1892236E-02
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  3.1164028E-02  3.3071157E-02
+   f2max =   18.76555    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  3.2095358E-02  3.3796292E-02
+   f2max =   484.1113    
+   real time =  6.2000002E-03 secs
+ 
+ vmax  3.2095358E-02  3.3796292E-02
+ total elapsed time =  1.8300001E-02  1.8300001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_22.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    24
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   89.77596       84.98355    
+ a         :  1.1016133E-02  1.1323133E-02  1.1630132E-02
+ expansion :  5.2793793E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   21.97042    
+ dt_pm2    :   24.65218    
+ dt_pp     :   2.187708    
+ dt_vmax   :   372.8220    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   35.74509    
+   vmax =  3.3486031E-02  3.5590943E-02
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  3.4841128E-02  3.6946196E-02
+   f2max =   22.51699    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  3.5995089E-02  3.7811063E-02
+   f2max =   574.9956    
+   real time =  6.3000000E-03 secs
+ 
+ vmax  3.5995089E-02  3.7811063E-02
+ total elapsed time =  1.6600000E-02  1.6600000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_23.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    25
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   84.98355       80.19113    
+ a         :  1.1630132E-02  1.1973375E-02  1.2316616E-02
+ expansion :  5.5736460E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   20.43661    
+ dt_pm2    :   22.93957    
+ dt_pp     :   2.040924    
+ dt_vmax   :   333.2358    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   43.11480    
+   vmax =  3.7591361E-02  3.9886836E-02
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  3.9135110E-02  4.1449904E-02
+   f2max =   28.01474    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  4.0595837E-02  4.2493131E-02
+   f2max =   738.3029    
+   real time =  6.2000002E-03 secs
+ 
+ vmax  4.0595837E-02  4.2493131E-02
+ total elapsed time =  1.6700000E-02  1.6700000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_24.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    26
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   80.19113       75.39870    
+ a         :  1.2316616E-02  1.2702922E-02  1.3089228E-02
+ expansion :  5.9026547E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   18.96406    
+ dt_pm2    :   21.12230    
+ dt_pp     :   1.864487    
+ dt_vmax   :   296.5185    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   52.22401    
+   vmax =  4.2435247E-02  4.4905804E-02
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  4.4186793E-02  4.6719264E-02
+   f2max =   35.62083    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  4.6085902E-02  4.7994796E-02
+   f2max =   756.9127    
+   real time =  6.6999998E-03 secs
+ 
+ vmax  4.6085902E-02  4.7994796E-02
+ total elapsed time =  1.7600000E-02  1.7600000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_25.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    27
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   75.39870       70.60626    
+ a         :  1.3089228E-02  1.3527244E-02  1.3965259E-02
+ expansion :  6.2729299E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   17.54999    
+ dt_pm2    :   19.31161    
+ dt_pp     :   1.798924    
+ dt_vmax   :   262.5284    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   63.55717    
+   vmax =  4.8214350E-02  5.0814215E-02
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  5.0186928E-02  5.2935001E-02
+   f2max =   45.10703    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  5.3970054E-02  5.4520831E-02
+   f2max =   1239.119    
+   real time =  6.8999999E-03 secs
+ 
+ vmax  5.3970054E-02  5.4520831E-02
+ total elapsed time =  1.7899999E-02  1.7899999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_26.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    28
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   70.60626       65.81380    
+ a         :  1.3965259E-02  1.4466113E-02  1.4966967E-02
+ expansion :  6.6927887E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   16.19200    
+ dt_pm2    :   17.64129    
+ dt_pp     :   1.541144    
+ dt_vmax   :   231.1043    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   77.75349    
+   vmax =  5.6306988E-02  5.7835311E-02
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  5.7533406E-02  6.0337134E-02
+   f2max =   56.66685    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =  6.4912230E-02  6.2350828E-02
+   f2max =   1329.493    
+   real time =  6.3000000E-03 secs
+ 
+ vmax  6.4912230E-02  6.2350828E-02
+ total elapsed time =  1.6500000E-02  1.6500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_27.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    29
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   65.81380       61.02133    
+ a         :  1.4966967E-02  1.5545225E-02  1.6123485E-02
+ expansion :  7.1728744E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   14.88813    
+ dt_pm2    :   16.11343    
+ dt_pp     :   1.464295    
+ dt_vmax   :   194.1082    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   95.66919    
+   vmax =  6.7901239E-02  6.6273056E-02
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  6.9806553E-02  6.9229871E-02
+   f2max =   69.97815    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  7.6072440E-02  7.4268445E-02
+   f2max =   2087.234    
+   real time =  6.3000000E-03 secs
+ 
+ vmax  7.6072440E-02  7.4268445E-02
+ total elapsed time =  1.6600000E-02  1.6600000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_28.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    30
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   61.02133       56.22884    
+ a         :  1.6123485E-02  1.6798595E-02  1.7473707E-02
+ expansion :  7.7271625E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   13.63656    
+ dt_pm2    :   14.74542    
+ dt_pp     :   1.261929    
+ dt_vmax   :   165.6316    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   118.4654    
+   vmax =  7.9489820E-02  7.8156576E-02
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  8.2036503E-02  8.0026567E-02
+   f2max =   83.97422    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  8.6620234E-02  8.3598465E-02
+   f2max =   3013.501    
+   real time =  6.5000001E-03 secs
+ 
+ vmax  8.6620234E-02  8.3598465E-02
+ total elapsed time =  1.6799999E-02  1.6799999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_29.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    31
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   56.22884       51.43633    
+ a         :  1.7473707E-02  1.8272227E-02  1.9070746E-02
+ expansion :  8.3742902E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   12.43546    
+ dt_pm2    :   13.55262    
+ dt_pp     :   1.107444    
+ dt_vmax   :   145.4625    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   147.7191    
+   vmax =  9.0605833E-02  8.9215077E-02
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  9.2815988E-02  9.3338169E-02
+   f2max =   108.3656    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.1071376      9.8506518E-02
+   f2max =   3256.831    
+   real time =  6.5000001E-03 secs
+ 
+ vmax  0.1071376      9.8506518E-02
+ total elapsed time =  1.6700000E-02  1.6700000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_30.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    32
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   51.43633       46.64380    
+ a         :  1.9070746E-02  2.0029917E-02  2.0989090E-02
+ expansion :  9.1397159E-02
+ dt        :   4.000000    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   11.28343    
+ dt_pm2    :   12.19207    
+ dt_pp     :   1.041434    
+ dt_vmax   :   117.6058    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   4.000000    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   185.6201    
+   vmax =  0.1118404      0.1053110    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.1131697      0.1101884    
+   f2max =   142.6969    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.1226681      0.1186185    
+   f2max =   3340.032    
+   real time =  6.5000001E-03 secs
+ 
+ vmax  0.1226681      0.1186185    
+ total elapsed time =  1.6799999E-02  1.6799999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_31.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    33
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   46.64380       41.90665    
+ a         :  2.0989090E-02  2.2147750E-02  2.3306409E-02
+ expansion :  9.9428423E-02
+ dt        :   3.953748    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   10.17889    
+ dt_pm2    :   10.87059    
+ dt_pp     :  0.9884369    
+ dt_vmax   :   102.7162    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   3.976874    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   234.8782    
+   vmax =  0.1277487      0.1268250    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.1274733      0.1322702    
+   f2max =   178.3583    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.1351501      0.1522342    
+   f2max =   2788.701    
+   real time =  6.5000001E-03 secs
+ 
+ vmax  0.1351501      0.1522342    
+ total elapsed time =  1.6700000E-02  1.6700000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_32.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    34
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   41.90665       37.19382    
+ a         :  2.3306409E-02  2.4744328E-02  2.6182245E-02
+ expansion :  0.1098392    
+ dt        :   3.933425    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   9.126845    
+ dt_pm2    :   9.777055    
+ dt_pp     :  0.9833562    
+ dt_vmax   :   82.76723    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   3.943586    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   299.2267    
+   vmax =  0.1420824      0.1622328    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.1436951      0.1676956    
+   f2max =   232.9774    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =  0.1554546      0.1578193    
+   f2max =   5383.544    
+   real time =  6.6000000E-03 secs
+ 
+ vmax  0.1554546      0.1578193    
+ total elapsed time =  1.6799999E-02  1.6799999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_33.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    35
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   37.19382       33.41117    
+ a         :  2.6182245E-02  2.7621290E-02  2.9060332E-02
+ expansion :  9.9038340E-02
+ dt        :   3.157049    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   8.127524    
+ dt_pm2    :   8.652267    
+ dt_pp     :  0.7892622    
+ dt_vmax   :   79.83812    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   3.545237    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   375.7578    
+   vmax =  0.1613406      0.1676057    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.1669785      0.1714625    
+   f2max =   291.3894    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.1789290      0.1794713    
+   f2max =   5972.278    
+   real time =  6.6999998E-03 secs
+ 
+ vmax  0.1789290      0.1794713    
+ total elapsed time =  1.6899999E-02  1.6899999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_34.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    36
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   33.41117       29.92259    
+ a         :  2.9060332E-02  3.0699573E-02  3.2338813E-02
+ expansion :  0.1013792    
+ dt        :   2.911583    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   7.266867    
+ dt_pm2    :   7.743830    
+ dt_pp     :  0.7278958    
+ dt_vmax   :   70.20622    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   3.034316    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   459.0612    
+   vmax =  0.1865288      0.1907581    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.1930336      0.1979641    
+   f2max =   342.6118    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.2304933      0.2272026    
+   f2max =   6063.339    
+   real time =  7.1000000E-03 secs
+ 
+ vmax  0.2304933      0.2272026    
+ total elapsed time =  1.7300000E-02  1.7300000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_35.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    37
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   29.92259       26.62600    
+ a         :  3.2338813E-02  3.4268301E-02  3.6197789E-02
+ expansion :  0.1066081    
+ dt        :   2.751326    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   6.556354    
+ dt_pm2    :   7.053902    
+ dt_pp     :  0.6878315    
+ dt_vmax   :   54.66536    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   2.831455    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   565.8239    
+   vmax =  0.2393430      0.2400120    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.2438642      0.2455026    
+   f2max =   437.4813    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.2623773      0.2775981    
+   f2max =   6279.034    
+   real time =  7.1999999E-03 secs
+ 
+ vmax  0.2623773      0.2775981    
+ total elapsed time =  1.7500000E-02  1.7500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_36.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    38
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   26.62600       23.53289    
+ a         :  3.6197789E-02  3.8479701E-02  4.0761612E-02
+ expansion :  0.1119638    
+ dt        :   2.581468    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   5.889515    
+ dt_pm2    :   6.280729    
+ dt_pp     :  0.6453669    
+ dt_vmax   :   45.38937    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   2.666397    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   695.5211    
+   vmax =  0.2723264      0.2920676    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.2779532      0.2931981    
+   f2max =   527.5367    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.2829989      0.2872196    
+   f2max =   9397.502    
+   real time =  7.6000001E-03 secs
+ 
+ vmax  0.2829989      0.2872196    
+ total elapsed time =  1.8100001E-02  1.8100001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_37.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    39
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   23.53289       20.89380    
+ a         :  4.0761612E-02  4.3218318E-02  4.5675024E-02
+ expansion :  0.1075732    
+ dt        :   2.202507    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   5.278406    
+ dt_pm2    :   5.656101    
+ dt_pp     :  0.5506267    
+ dt_vmax   :   43.86887    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   2.391987    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   843.5867    
+   vmax =  0.2927210      0.2989405    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.2933528      0.2992616    
+   f2max =   672.9583    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.3001776      0.3093905    
+   f2max =   10870.78    
+   real time =  7.7999998E-03 secs
+ 
+ vmax  0.3001776      0.3093905    
+ total elapsed time =  1.8400000E-02  1.8400000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_38.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    40
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   20.89380       19.99999    
+ a         :  4.5675024E-02  4.6647042E-02  4.7619060E-02
+ expansion :  4.0824734E-02
+ dt        :  0.7459425    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   4.746023    
+ dt_pm2    :   5.021867    
+ dt_pp     :  0.5009877    
+ dt_vmax   :   40.72523    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.474225    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   955.7772    
+   vmax =  0.3044849      0.3138813    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =  0.3066477      0.3152635    
+   f2max =   798.9653    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  0.3086850      0.3166242    
+   f2max =   10774.86    
+   real time =  7.7999998E-03 secs
+ 
+ vmax  0.3086850      0.3166242    
+ drift
+   dt_mid =  0.3729712    
+   elapsed time =  1.9999999E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  4.7619060E-02   150.2370      0.0000000E+00
+ | timestep        =                    40
+ | dt PM123,PP     =   4.427871       4.630759      0.4832938    
+ | dt v            =   39.79481    
+ | cur_checkpoint  =      3   10.00000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   20540.99     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =  0.3166242    
+ ------------------------------------------------------------------------------
+ total elapsed time =  1.9300001E-02  1.9300001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_39.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    41
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   19.99999       17.68358    
+ a         :  4.7619060E-02  5.0570995E-02  5.3522926E-02
+ expansion :  0.1103054    
+ dt        :   1.933175    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   4.427871    
+ dt_pm2    :   4.630759    
+ dt_pp     :  0.4832938    
+ dt_vmax   :   39.79481    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.9665875    
+   elapsed time =  1.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1067.882    
+   vmax =  0.3205474      0.3292859    
+   real time =  4.6999999E-03 secs
+ 
+ PM2
+   vmax =  0.3190957      0.3298548    
+   f2max =   924.1017    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  0.3571946      0.3964999    
+   f2max =   13393.20    
+   real time =  8.2000000E-03 secs
+ 
+ vmax  0.3571946      0.3964999    
+ total elapsed time =  1.9500000E-02  1.9500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_40.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    42
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   17.68358       15.57657    
+ a         :  5.3522926E-02  5.6924522E-02  6.0326118E-02
+ expansion :  0.1127736    
+ dt        :   1.758386    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   4.136324    
+ dt_pm2    :   4.288600    
+ dt_pp     :  0.4395966    
+ dt_vmax   :   31.77806    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.845781    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1253.333    
+   vmax =  0.3708833      0.4097350    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =  0.3774243      0.4030122    
+   f2max =   1152.025    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  0.4207104      0.4107070    
+   f2max =   15606.52    
+   real time =  8.2000000E-03 secs
+ 
+ vmax  0.4207104      0.4107070    
+ total elapsed time =  1.8800000E-02  1.8800000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_41.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    43
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   15.57657       13.66508    
+ a         :  6.0326118E-02  6.4257666E-02  6.8189219E-02
+ expansion :  0.1153129    
+ dt        :   1.595181    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   3.745673    
+ dt_pm2    :   3.825436    
+ dt_pp     :  0.3987952    
+ dt_vmax   :   29.94934    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.676784    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1454.817    
+   vmax =  0.4340867      0.4327821    
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  0.4445179      0.4427379    
+   f2max =   1408.887    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =  0.4842860      0.4859344    
+   f2max =   17869.73    
+   real time =  8.3999997E-03 secs
+ 
+ vmax  0.4842860      0.4859344    
+ total elapsed time =  1.8800000E-02  1.8800000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_42.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    44
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   13.66508       11.92580    
+ a         :  6.8189219E-02  7.2776929E-02  7.7364638E-02
+ expansion :  0.1185997    
+ dt        :   1.451424    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   3.396500    
+ dt_pm2    :   3.423850    
+ dt_pp     :  0.3628559    
+ dt_vmax   :   25.92942    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.523302    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1670.412    
+   vmax =  0.4978867      0.5097281    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =  0.5072753      0.5169351    
+   f2max =   1687.930    
+   real time =  1.8000000E-03 secs
+ 
+ PP
+   vmax =  0.5449552      0.5389818    
+   f2max =   24944.86    
+   real time =  1.0700000E-02 secs
+ 
+ vmax  0.5449552      0.5389818    
+ total elapsed time =  2.1600001E-02  2.1600001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_43.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    45
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   11.92580       10.42221    
+ a         :  7.7364638E-02  8.2456686E-02  8.7548740E-02
+ expansion :  0.1163249    
+ dt        :   1.254712    
+ dt_a      :   100.0000    
+ dt_e      :   1.000000    
+ dt_pm1    :   3.083141    
+ dt_pm2    :   3.075110    
+ dt_pp     :  0.3136780    
+ dt_vmax   :   23.12117    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.353068    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   1905.859    
+   vmax =  0.5638236      0.5676540    
+   real time =  4.8000002E-03 secs
+ 
+ PM2
+   vmax =  0.5682020      0.5862198    
+   f2max =   1982.503    
+   real time =  2.6000000E-03 secs
+ 
+ PP
+   vmax =  0.5898809      0.6120103    
+   f2max =   31558.79    
+   real time =  1.7999999E-02 secs
+ 
+ vmax  0.5898809      0.6120103    
+ total elapsed time =  3.1300001E-02  3.1300001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_44.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    46
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   10.42221       9.999998    
+ a         :  8.7548740E-02  8.9228928E-02  9.0909109E-02
+ expansion :  3.6964059E-02
+ dt        :  0.3523175    
+ dt_a      :   100.0000    
+ dt_e      :  0.9531265    
+ dt_pm1    :   2.802597    
+ dt_pm2    :   2.775107    
+ dt_pp     :  0.2778645    
+ dt_vmax   :   20.58789    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.8035147    
+   elapsed time =  5.0000002E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   2071.164    
+   vmax =  0.5957628      0.6211660    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =  0.5960615      0.6277343    
+   f2max =   2196.760    
+   real time =  2.0000001E-03 secs
+ 
+ PP
+   vmax =  0.6036140      0.6272626    
+   f2max =   27840.84    
+   real time =  1.3500000E-02 secs
+ 
+ vmax  0.6036140      0.6272626    
+ drift
+   dt_mid =  0.1761588    
+   elapsed time =  5.0000002E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  9.0909109E-02   158.5823      0.0000000E+00
+ | timestep        =                    46
+ | dt PM123,PP     =   2.638698       2.600146      0.2756149    
+ | dt v            =   20.08728    
+ | cur_checkpoint  =      4   5.000000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   10759.56     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =  0.6272626    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.2900002E-02  3.2900002E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_45.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    47
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   9.999998       8.678800    
+ a         :  9.0909109E-02  9.7113848E-02  0.1033186    
+ expansion :  0.1201089    
+ dt        :   1.102460    
+ dt_a      :   100.0000    
+ dt_e      :  0.9178847    
+ dt_pm1    :   2.638698    
+ dt_pm2    :   2.600146    
+ dt_pp     :  0.2756149    
+ dt_vmax   :   20.08728    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.5512299    
+   elapsed time =  5.0000002E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   2227.446    
+   vmax =  0.6250275      0.6589537    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =  0.6358654      0.6827813    
+   f2max =   2371.059    
+   real time =  2.0999999E-03 secs
+ 
+ PP
+   vmax =  0.6584306      0.6608083    
+   f2max =   18548.72    
+   real time =  1.8100001E-02 secs
+ 
+ vmax  0.6584306      0.6608083    
+ total elapsed time =  3.5700001E-02  3.5700001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_46.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    48
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   8.678800       7.276981    
+ a         :  0.1033186      0.1120678      0.1208170    
+ expansion :  0.1448339    
+ dt        :   1.169680    
+ dt_a      :   100.0000    
+ dt_e      :  0.8076044    
+ dt_pm1    :   2.483727    
+ dt_pm2    :   2.445232    
+ dt_pp     :  0.2924200    
+ dt_vmax   :   19.06756    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.136070    
+   elapsed time =  5.0000002E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   2559.944    
+   vmax =  0.6845413      0.6998556    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =  0.6835077      0.7376664    
+   f2max =   2808.195    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.7705296      0.8148376    
+   f2max =   22036.45    
+   real time =  1.0100000E-02 secs
+ 
+ vmax  0.7705296      0.8148376    
+ total elapsed time =  2.4499999E-02  2.4499999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_47.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    49
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   7.276981       6.026981    
+ a         :  0.1208170      0.1315628      0.1423086    
+ expansion :  0.1510212    
+ dt        :   1.042943    
+ dt_a      :   100.0000    
+ dt_e      :  0.6905941    
+ dt_pm1    :   2.233049    
+ dt_pm2    :   2.181971    
+ dt_pp     :  0.2607356    
+ dt_vmax   :   15.46320    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =   1.106311    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   2992.818    
+   vmax =  0.8001733      0.8601858    
+   real time =  4.3000001E-03 secs
+ 
+ PM2
+   vmax =  0.8166278      0.9071901    
+   f2max =   3664.494    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.9014809      0.8911421    
+   f2max =   35915.21    
+   real time =  1.0600000E-02 secs
+ 
+ vmax  0.9014809      0.8911421    
+ total elapsed time =  2.1100000E-02  2.1100000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_48.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    50
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   6.026981       5.005855    
+ a         :  0.1423086      0.1544064      0.1665042    
+ expansion :  0.1453150    
+ dt        :  0.8519223    
+ dt_a      :   100.0000    
+ dt_e      :  0.5862551    
+ dt_pm1    :   1.982027    
+ dt_pm2    :   1.884196    
+ dt_pp     :  0.2129806    
+ dt_vmax   :   13.97700    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.9474324    
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   3436.281    
+   vmax =  0.9298576      0.9342101    
+   real time =  4.3000001E-03 secs
+ 
+ PM2
+   vmax =  0.9310795      0.9793256    
+   f2max =   4596.727    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =  0.9520509      0.9552725    
+   f2max =   31389.81    
+   real time =  1.2000000E-02 secs
+ 
+ vmax  0.9520509      0.9552725    
+ total elapsed time =  2.2399999E-02  2.2399999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_49.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    51
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   5.005855       4.999999    
+ a         :  0.1665042      0.1665854      0.1666667    
+ expansion :  9.7510539E-04
+ dt        :  4.8858547E-03
+ dt_a      :   100.0000    
+ dt_e      :  0.5010187    
+ dt_pm1    :   1.767426    
+ dt_pm2    :   1.643431    
+ dt_pp     :  0.2033276    
+ dt_vmax   :   13.18995    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.4284041    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   3667.813    
+   vmax =  0.9522130      0.9555371    
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =  0.9521396      0.9557992    
+   f2max =   5043.065    
+   real time =  2.3000001E-03 secs
+ 
+ PP
+   vmax =  0.9514360      0.9556666    
+   f2max =   42141.45    
+   real time =  2.5599999E-02 secs
+ 
+ vmax  0.9514360      0.9556666    
+ drift
+   dt_mid =  2.4429273E-03
+   elapsed time =  1.7600000E-02 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.1666667       162.7542      0.0000000E+00
+ | timestep        =                    51
+ | dt PM123,PP     =   1.674079       1.545981      0.1818571    
+ | dt v            =   13.18451    
+ | cur_checkpoint  =      5   3.000000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   5868.854     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =  0.9556666    
+ ------------------------------------------------------------------------------
+ total elapsed time =  7.5999998E-02  7.5999998E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_50.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    52
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   4.999999       4.128024    
+ a         :  0.1666667      0.1808368      0.1950069    
+ expansion :  0.1453292    
+ dt        :  0.7274285    
+ dt_a      :   100.0000    
+ dt_e      :  0.5005298    
+ dt_pm1    :   1.674079    
+ dt_pm2    :   1.545981    
+ dt_pp     :  0.1818571    
+ dt_vmax   :   13.18451    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.3637142    
+   elapsed time =  1.5000000E-02 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   3866.410    
+   vmax =  0.9801832      0.9980392    
+   real time =  2.9700000E-02 secs
+ 
+ PM2
+   vmax =  0.9762266       1.034212    
+   f2max =   5321.094    
+   real time =  2.6000000E-03 secs
+ 
+ PP
+   vmax =   1.036542       1.115841    
+   f2max =   49711.46    
+   real time =  2.2000000E-02 secs
+ 
+ vmax   1.036542       1.115841    
+ total elapsed time =  7.5000003E-02  7.5000003E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_51.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    53
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   4.128024       3.324897    
+ a         :  0.1950069      0.2131131      0.2312194    
+ expansion :  0.1566152    
+ dt        :  0.6699288    
+ dt_a      :   100.0000    
+ dt_e      :  0.4277418    
+ dt_pm1    :   1.585717    
+ dt_pm2    :   1.464039    
+ dt_pp     :  0.1674822    
+ dt_vmax   :   11.29193    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.6986787    
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   4292.579    
+   vmax =   1.070749       1.166120    
+   real time =  3.0000000E-03 secs
+ 
+ PM2
+   vmax =   1.087808       1.223601    
+   f2max =   5974.825    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =   1.257923       1.316313    
+   f2max =   57331.04    
+   real time =  1.7100001E-02 secs
+ 
+ vmax   1.257923       1.316313    
+ total elapsed time =  2.6400000E-02  2.6400000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_52.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    54
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   3.324897       3.000001    
+ a         :  0.2312194      0.2406096      0.2499999    
+ expansion :  7.5122282E-02
+ dt        :  0.2709894    
+ dt_a      :   100.0000    
+ dt_e      :  0.3606982    
+ dt_pm1    :   1.423022    
+ dt_pm2    :   1.310116    
+ dt_pp     :  0.1488756    
+ dt_vmax   :   9.572191    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  0.4704591    
+   elapsed time =  5.0000002E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   4613.482    
+   vmax =   1.267436       1.338421    
+   real time =  3.8999999E-03 secs
+ 
+ PM2
+   vmax =   1.276567       1.355238    
+   f2max =   6518.655    
+   real time =  3.5000001E-03 secs
+ 
+ PP
+   vmax =   1.310007       1.402379    
+   f2max =   73063.88    
+   real time =  5.5199999E-02 secs
+ 
+ vmax   1.310007       1.402379    
+ drift
+   dt_mid =  0.1354947    
+   elapsed time =  6.9999998E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.2499999       164.4225      0.0000000E+00
+ | timestep        =                    54
+ | dt PM123,PP     =   1.315323       1.206425      0.1318694    
+ | dt v            =   8.984732    
+ | cur_checkpoint  =      6   2.990300    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   3912.571     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.402379    
+ ------------------------------------------------------------------------------
+ total elapsed time =  9.0800002E-02  9.0800002E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_53.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    55
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   3.000001       2.990297    
+ a         :  0.2499999      0.2503039      0.2506079    
+ expansion :  2.4261940E-03
+ dt        :  8.0945650E-03
+ dt_a      :   100.0000    
+ dt_e      :  0.3335754    
+ dt_pm1    :   1.315323    
+ dt_pm2    :   1.206425    
+ dt_pp     :  0.1318694    
+ dt_vmax   :   8.984732    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  4.0472825E-03
+   elapsed time =  6.0000003E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   4712.844    
+   vmax =   1.310511       1.403056    
+   real time =  4.6999999E-03 secs
+ 
+ PM2
+   vmax =   1.310856       1.403464    
+   f2max =   6690.469    
+   real time =  3.1999999E-03 secs
+ 
+ PP
+   vmax =   1.312842       1.404405    
+   f2max =   101069.0    
+   real time =  1.8500000E-02 secs
+ 
+ vmax   1.312842       1.404405    
+ drift
+   dt_mid =  4.0472825E-03
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.2506079       164.4306      0.0000000E+00
+ | timestep        =                    55
+ | dt PM123,PP     =   1.282749       1.175163      0.1192169    
+ | dt v            =   8.971771    
+ | cur_checkpoint  =      7   2.752300    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   3903.079     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.404405    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.5999998E-02  3.5999998E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_54.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    56
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   2.990297       2.752300    
+ a         :  0.2506079      0.2585556      0.2665032    
+ expansion :  5.9643764E-02
+ dt        :  0.1984971    
+ dt_a      :   100.0000    
+ dt_e      :  0.3327653    
+ dt_pm1    :   1.282749    
+ dt_pm2    :   1.175163    
+ dt_pp     :  0.1192169    
+ dt_vmax   :   8.971771    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  9.9248528E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   4786.078    
+   vmax =   1.325407       1.421366    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.331201       1.429237    
+   f2max =   6805.669    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.388858       1.445848    
+   f2max =   100439.7    
+   real time =  1.3100000E-02 secs
+ 
+ vmax   1.388858       1.445848    
+ drift
+   dt_mid =  9.9248528E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.2665032       164.6291      0.0000000E+00
+ | timestep        =                    56
+ | dt PM123,PP     =   1.257258       1.151335      0.1174824    
+ | dt v            =   8.714609    
+ | cur_checkpoint  =      8   2.528500    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   3670.284     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.445848    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.5500000E-02  2.5500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_55.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    57
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   2.752300       2.528501    
+ a         :  0.2665032      0.2749549      0.2834065    
+ expansion :  5.9643351E-02
+ dt        :  0.1866480    
+ dt_a      :   100.0000    
+ dt_e      :  0.3128962    
+ dt_pm1    :   1.257258    
+ dt_pm2    :   1.151335    
+ dt_pp     :  0.1174824    
+ dt_vmax   :   8.714609    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  9.3324013E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   4927.387    
+   vmax =   1.401006       1.462418    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.400526       1.465230    
+   f2max =   6975.267    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.394406       1.504686    
+   f2max =   74144.12    
+   real time =  1.4400000E-02 secs
+ 
+ vmax   1.394406       1.504686    
+ drift
+   dt_mid =  9.3324013E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.2834065       164.8157      0.0000000E+00
+ | timestep        =                    57
+ | dt PM123,PP     =   1.210351       1.109623      0.1229069    
+ | dt v            =   8.373838    
+ | cur_checkpoint  =      9   2.318000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   3451.376     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.504686    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.6300000E-02  2.6300000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_56.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    58
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   2.528501       2.318001    
+ a         :  0.2834065      0.2923964      0.3013863    
+ expansion :  5.9657075E-02
+ dt        :  0.1755464    
+ dt_a      :   100.0000    
+ dt_e      :  0.2942118    
+ dt_pm1    :   1.210351    
+ dt_pm2    :   1.109623    
+ dt_pp     :  0.1229069    
+ dt_vmax   :   8.373838    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  8.7773181E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5064.390    
+   vmax =   1.406155       1.522238    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.400177       1.527430    
+   f2max =   7080.440    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   1.370965       1.526555    
+   f2max =   75954.66    
+   real time =  1.3000000E-02 secs
+ 
+ vmax   1.370965       1.526555    
+ drift
+   dt_mid =  8.7773181E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.3013863       164.9913      0.0000000E+00
+ | timestep        =                    58
+ | dt PM123,PP     =   1.165677       1.072001      0.1184681    
+ | dt v            =   8.253881    
+ | cur_checkpoint  =     10   2.120100    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   3245.477     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.526555    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.5000000E-02  2.5000000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_57.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    59
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   2.318001       2.120100    
+ a         :  0.3013863      0.3109444      0.3205025    
+ expansion :  5.9644405E-02
+ dt        :  0.1650296    
+ dt_a      :   100.0000    
+ dt_e      :  0.2766369    
+ dt_pm1    :   1.165677    
+ dt_pm2    :   1.072001    
+ dt_pp     :  0.1184681    
+ dt_vmax   :   8.253881    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  8.2514822E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5196.996    
+   vmax =   1.382339       1.543711    
+   real time =  4.6999999E-03 secs
+ 
+ PM2
+   vmax =   1.371448       1.544206    
+   f2max =   7188.468    
+   real time =  1.7000000E-03 secs
+ 
+ PP
+   vmax =   1.404721       1.568325    
+   f2max =   77511.85    
+   real time =  1.3600000E-02 secs
+ 
+ vmax   1.404721       1.568325    
+ drift
+   dt_mid =  8.2514822E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.3205025       165.1563      0.0000000E+00
+ | timestep        =                    59
+ | dt PM123,PP     =   1.123096       1.035609      0.1142991    
+ | dt v            =   8.034050    
+ | cur_checkpoint  =     11   1.933900    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   3051.903     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.568325    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.5699999E-02  2.5699999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_58.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    60
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   2.120100       1.933900    
+ a         :  0.3205025      0.3306729      0.3408432    
+ expansion :  5.9677575E-02
+ dt        :  0.1552638    
+ dt_a      :   100.0000    
+ dt_e      :  0.2601132    
+ dt_pm1    :   1.123096    
+ dt_pm2    :   1.035609    
+ dt_pp     :  0.1142991    
+ dt_vmax   :   8.034050    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  7.7631876E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5325.155    
+   vmax =   1.421119       1.587047    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.430545       1.601477    
+   f2max =   7520.666    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.480564       1.623828    
+   f2max =   69398.12    
+   real time =  1.3500000E-02 secs
+ 
+ vmax   1.480564       1.623828    
+ drift
+   dt_mid =  7.7631876E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.3408432       165.3116      0.0000000E+00
+ | timestep        =                    60
+ | dt PM123,PP     =   1.082465      0.9929625      0.1139436    
+ | dt v            =   7.759444    
+ | cur_checkpoint  =     12   1.758900    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   2869.772     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.623828    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.5400000E-02  2.5400000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_59.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    61
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.933900       1.758901    
+ a         :  0.3408432      0.3516532      0.3624632    
+ expansion :  5.9647396E-02
+ dt        :  0.1459152    
+ dt_a      :   100.0000    
+ dt_e      :  0.2445655    
+ dt_pm1    :   1.082465    
+ dt_pm2    :  0.9929625    
+ dt_pp     :  0.1139436    
+ dt_vmax   :   7.759444    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  7.2957605E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5503.230    
+   vmax =   1.496830       1.642278    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.504455       1.652991    
+   f2max =   7858.222    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.529471       1.674468    
+   f2max =   72101.62    
+   real time =  1.3500000E-02 secs
+ 
+ vmax   1.529471       1.674468    
+ drift
+   dt_mid =  7.2957605E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.3624632       165.4575      0.0000000E+00
+ | timestep        =                    61
+ | dt PM123,PP     =   1.041081      0.9523746      0.1094417    
+ | dt v            =   7.524778    
+ | cur_checkpoint  =     13   1.594300    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   2698.598     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.674468    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.5400000E-02  2.5400000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_60.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    62
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.758901       1.594300    
+ a         :  0.3624632      0.3739618      0.3854604    
+ expansion :  5.9661578E-02
+ dt        :  0.1372348    
+ dt_a      :   100.0000    
+ dt_e      :  0.2299519    
+ dt_pm1    :   1.041081    
+ dt_pm2    :  0.9523746    
+ dt_pp     :  0.1094417    
+ dt_vmax   :   7.524778    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  6.8617381E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5679.289    
+   vmax =   1.542908       1.692636    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.553352       1.700011    
+   f2max =   8175.300    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   1.637575       1.717567    
+   f2max =   78843.58    
+   real time =  1.4200000E-02 secs
+ 
+ vmax   1.637575       1.717567    
+ drift
+   dt_mid =  6.8617381E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.3854604       165.5947      0.0000000E+00
+ | timestep        =                    62
+ | dt PM123,PP     =   1.001634      0.9144430      0.1037818    
+ | dt v            =   7.335957    
+ | cur_checkpoint  =     14   1.439600    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   2537.595     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.717567    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.6200000E-02  2.6200000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_61.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    63
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.594300       1.439600    
+ a         :  0.3854604      0.3976818      0.4099032    
+ expansion :  5.9630718E-02
+ dt        :  0.1289715    
+ dt_a      :   100.0000    
+ dt_e      :  0.2162055    
+ dt_pm1    :   1.001634    
+ dt_pm2    :  0.9144430    
+ dt_pp     :  0.1037818    
+ dt_vmax   :   7.335957    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  6.4485736E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   5851.697    
+   vmax =   1.650637       1.735420    
+   real time =  4.6999999E-03 secs
+ 
+ PM2
+   vmax =   1.651596       1.739438    
+   f2max =   8487.837    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.709598       1.752436    
+   f2max =   110966.8    
+   real time =  1.4900000E-02 secs
+ 
+ vmax   1.709598       1.752436    
+ drift
+   dt_mid =  6.4485736E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.4099032       165.7237      0.0000000E+00
+ | timestep        =                    63
+ | dt PM123,PP     =  0.9640685      0.8784744      9.2397481E-02
+ | dt v            =   7.189991    
+ | cur_checkpoint  =     15   1.294100    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   2386.277     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.752436    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.6699999E-02  2.6699999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_62.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    64
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.439600       1.294100    
+ a         :  0.4099032      0.4229020      0.4359007    
+ expansion :  5.9640922E-02
+ dt        :  0.1212924    
+ dt_a      :   100.0000    
+ dt_e      :  0.2032844    
+ dt_pm1    :  0.9640685    
+ dt_pm2    :  0.8784744    
+ dt_pp     :  9.2397481E-02
+ dt_vmax   :   7.189991    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  6.0646199E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6020.292    
+   vmax =   1.722282       1.769969    
+   real time =  4.4999998E-03 secs
+ 
+ PM2
+   vmax =   1.718083       1.770322    
+   f2max =   8800.771    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.772873       1.795745    
+   f2max =   150632.3    
+   real time =  1.5300000E-02 secs
+ 
+ vmax   1.772873       1.795745    
+ drift
+   dt_mid =  6.0646199E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.4359007       165.8450      0.0000000E+00
+ | timestep        =                    64
+ | dt PM123,PP     =  0.9282650      0.8442016      8.3009310E-02
+ | dt v            =   7.016586    
+ | cur_checkpoint  =     16   1.157200    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   2243.957     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.795745    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.7200000E-02  2.7200000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_63.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    65
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.294100       1.157200    
+ a         :  0.4359007      0.4497323      0.4635639    
+ expansion :  5.9674930E-02
+ dt        :  0.1141140    
+ dt_a      :   100.0000    
+ dt_e      :  0.1911299    
+ dt_pm1    :  0.9282650    
+ dt_pm2    :  0.8442016    
+ dt_pp     :  8.3009310E-02
+ dt_vmax   :   7.016586    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  5.7057004E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6185.034    
+   vmax =   1.788424       1.816648    
+   real time =  5.2000000E-03 secs
+ 
+ PM2
+   vmax =   1.793348       1.838257    
+   f2max =   9106.977    
+   real time =  1.4000000E-03 secs
+ 
+ PP
+   vmax =   1.792562       1.882996    
+   f2max =   140873.9    
+   real time =  1.4900000E-02 secs
+ 
+ vmax   1.792562       1.882996    
+ drift
+   dt_mid =  5.7057004E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.4635639       165.9591      0.0000000E+00
+ | timestep        =                    65
+ | dt PM123,PP     =  0.8940949      0.8116627      8.1854299E-02
+ | dt v            =   6.691465    
+ | cur_checkpoint  =     17   1.028500    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   2110.049     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.882996    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.7400000E-02  2.7400000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_64.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    66
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.157200       1.028500    
+ a         :  0.4635639      0.4782694      0.4929750    
+ expansion :  5.9660546E-02
+ dt        :  0.1072694    
+ dt_a      :   100.0000    
+ dt_e      :  0.1797937    
+ dt_pm1    :  0.8940949    
+ dt_pm2    :  0.8116627    
+ dt_pp     :  8.1854299E-02
+ dt_vmax   :   6.691465    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  5.3634699E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6345.787    
+   vmax =   1.807861       1.904781    
+   real time =  4.6000001E-03 secs
+ 
+ PM2
+   vmax =   1.809329       1.930676    
+   f2max =   9394.156    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.781020       1.995269    
+   f2max =   152851.2    
+   real time =  1.6200000E-02 secs
+ 
+ vmax   1.781020       1.995269    
+ drift
+   dt_mid =  5.3634699E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.4929750       166.0664      0.0000000E+00
+ | timestep        =                    66
+ | dt PM123,PP     =  0.8614667      0.7809899      7.7771895E-02
+ | dt v            =   6.314937    
+ | cur_checkpoint  =     18  0.9075000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1984.162     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   1.995269    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.8000001E-02  2.8000001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_65.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    67
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :   1.028500      0.9075003    
+ a         :  0.4929750      0.5086107      0.5242463    
+ expansion :  5.9650015E-02
+ dt        :  0.1008426    
+ dt_a      :   100.0000    
+ dt_e      :  0.1690511    
+ dt_pm1    :  0.8614667    
+ dt_pm2    :  0.7809899    
+ dt_pp     :  7.7771895E-02
+ dt_vmax   :   6.314937    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  5.0421312E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6502.415    
+   vmax =   1.794967       2.016809    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =   1.807385       2.040262    
+   f2max =   9650.656    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.840366       2.124827    
+   f2max =   150154.3    
+   real time =  1.7899999E-02 secs
+ 
+ vmax   1.840366       2.124827    
+ drift
+   dt_mid =  5.0421312E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.5242463       166.1672      0.0000000E+00
+ | timestep        =                    67
+ | dt PM123,PP     =  0.8302996      0.7522535      7.5752854E-02
+ | dt v            =   5.929894    
+ | cur_checkpoint  =     19  0.7937000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1865.807     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.124827    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.9600000E-02  2.9600000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_66.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    68
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.9075003      0.7937001    
+ a         :  0.5242463      0.5408766      0.5575068    
+ expansion :  5.9659258E-02
+ dt        :  9.4832726E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1589517    
+ dt_pm1    :  0.8302996    
+ dt_pm2    :  0.7522535    
+ dt_pp     :  7.5752854E-02
+ dt_vmax   :   5.929894    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  4.7416363E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6654.861    
+   vmax =   1.857626       2.146075    
+   real time =  4.4000000E-03 secs
+ 
+ PM2
+   vmax =   1.876103       2.166697    
+   f2max =   9869.603    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   1.954046       2.208362    
+   f2max =   141562.9    
+   real time =  1.7899999E-02 secs
+ 
+ vmax   1.954046       2.208362    
+ drift
+   dt_mid =  4.7416363E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.5575068       166.2621      0.0000000E+00
+ | timestep        =                    68
+ | dt PM123,PP     =  0.8005019      0.7253910      7.4548647E-02
+ | dt v            =   5.705586    
+ | cur_checkpoint  =     20  0.6867000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1754.494     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.208362    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.9700000E-02  2.9700000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_67.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    69
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.7937001      0.6867002    
+ a         :  0.5575068      0.5751902      0.5928736    
+ expansion :  5.9653189E-02
+ dt        :  8.9157075E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1494520    
+ dt_pm1    :  0.8005019    
+ dt_pm2    :  0.7253910    
+ dt_pp     :  7.4548647E-02
+ dt_vmax   :   5.705586    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  4.4578537E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6803.061    
+   vmax =   1.969344       2.229274    
+   real time =  4.9000001E-03 secs
+ 
+ PM2
+   vmax =   1.986040       2.246667    
+   f2max =   10044.20    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   2.066446       2.270859    
+   f2max =   155393.5    
+   real time =  1.7999999E-02 secs
+ 
+ vmax   2.066446       2.270859    
+ drift
+   dt_mid =  4.4578537E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.5928736       166.3512      0.0000000E+00
+ | timestep        =                    69
+ | dt PM123,PP     =  0.7719948      0.7003443      7.0625618E-02
+ | dt v            =   5.548561    
+ | cur_checkpoint  =     21  0.5861000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1649.833     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.270859    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.0400001E-02  3.0400001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_68.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    70
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.6867002      0.5861003    
+ a         :  0.5928736      0.6116754      0.6304771    
+ expansion :  5.9643056E-02
+ dt        :  8.3815098E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1405203    
+ dt_pm1    :  0.7719948    
+ dt_pm2    :  0.7003443    
+ dt_pp     :  7.0625618E-02
+ dt_vmax   :   5.548561    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  4.1907549E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   6946.950    
+   vmax =   2.081427       2.291407    
+   real time =  4.6999999E-03 secs
+ 
+ PM2
+   vmax =   2.094339       2.305239    
+   f2max =   10175.66    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   2.183959       2.323069    
+   f2max =   160769.2    
+   real time =  1.8300001E-02 secs
+ 
+ vmax   2.183959       2.323069    
+ drift
+   dt_mid =  4.1907549E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.6304771       166.4350      0.0000000E+00
+ | timestep        =                    70
+ | dt PM123,PP     =  0.7447099      0.6769320      6.7907073E-02
+ | dt v            =   5.423860    
+ | cur_checkpoint  =     22  0.4915000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1551.432     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.323069    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.0600000E-02  3.0600000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_69.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    71
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.5861003      0.4915004    
+ a         :  0.6304771      0.6504715      0.6704658    
+ expansion :  5.9643164E-02
+ dt        :  7.8806758E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1321213    
+ dt_pm1    :  0.7447099    
+ dt_pm2    :  0.6769320    
+ dt_pp     :  6.7907073E-02
+ dt_vmax   :   5.423860    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  3.9403379E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7086.492    
+   vmax =   2.198605       2.343235    
+   real time =  5.1000002E-03 secs
+ 
+ PM2
+   vmax =   2.207262       2.353894    
+   f2max =   10271.80    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   2.296885       2.339752    
+   f2max =   163481.8    
+   real time =  1.6000001E-02 secs
+ 
+ vmax   2.296885       2.339752    
+ drift
+   dt_mid =  3.9403379E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.6704658       166.5138      0.0000000E+00
+ | timestep        =                    71
+ | dt PM123,PP     =  0.7185785      0.6548932      6.5575972E-02
+ | dt v            =   5.385185    
+ | cur_checkpoint  =     23  0.4025000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1458.900     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.339752    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.8500000E-02  2.8500000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_70.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    72
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.4915004      0.4025003    
+ a         :  0.6704658      0.6917391      0.7130123    
+ expansion :  5.9671503E-02
+ dt        :  7.4133635E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1242245    
+ dt_pm1    :  0.7185785    
+ dt_pm2    :  0.6548932    
+ dt_pp     :  6.5575972E-02
+ dt_vmax   :   5.385185    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  3.7066817E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7221.716    
+   vmax =   2.311188       2.359544    
+   real time =  5.1000002E-03 secs
+ 
+ PM2
+   vmax =   2.315026       2.367571    
+   f2max =   10413.92    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   2.384728       2.297626    
+   f2max =   164800.5    
+   real time =  1.7600000E-02 secs
+ 
+ vmax   2.384728       2.297626    
+ drift
+   dt_mid =  3.7066817E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.7130123       166.5880      0.0000000E+00
+ | timestep        =                    72
+ | dt PM123,PP     =  0.6935295      0.6328802      6.3462235E-02
+ | dt v            =   5.283621    
+ | cur_checkpoint  =     24  0.3189000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1371.845     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.297626    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.0099999E-02  3.0099999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_71.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    73
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.4025003      0.3189002    
+ a         :  0.7130123      0.7356099      0.7582075    
+ expansion :  5.9607901E-02
+ dt        :  6.9624938E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1167934    
+ dt_pm1    :  0.6935295    
+ dt_pm2    :  0.6328802    
+ dt_pp     :  6.3462235E-02
+ dt_vmax   :   5.283621    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  3.4812469E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7352.536    
+   vmax =   2.398657       2.317031    
+   real time =  5.2000000E-03 secs
+ 
+ PM2
+   vmax =   2.397326       2.322848    
+   f2max =   10561.92    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   2.478878       2.292758    
+   f2max =   210113.8    
+   real time =  1.6700000E-02 secs
+ 
+ vmax   2.478878       2.292758    
+ drift
+   dt_mid =  3.4812469E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.7582075       166.6576      0.0000000E+00
+ | timestep        =                    73
+ | dt PM123,PP     =  0.6695193      0.6115567      5.7914693E-02
+ | dt v            =   5.082944    
+ | cur_checkpoint  =     25  0.2402000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1290.072     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.292758    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.9300001E-02  2.9300001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_72.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    74
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.3189002      0.2402002    
+ a         :  0.7582075      0.7822645      0.8063214    
+ expansion :  5.9670888E-02
+ dt        :  6.5536171E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1098145    
+ dt_pm1    :  0.6695193    
+ dt_pm2    :  0.6115567    
+ dt_pp     :  5.7914693E-02
+ dt_vmax   :   5.082944    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  3.2768086E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7478.961    
+   vmax =   2.496589       2.313389    
+   real time =  5.1000002E-03 secs
+ 
+ PM2
+   vmax =   2.510818       2.319678    
+   f2max =   10913.15    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   2.571988       2.374714    
+   f2max =   221725.5    
+   real time =  1.5799999E-02 secs
+ 
+ vmax   2.571988       2.374714    
+ drift
+   dt_mid =  3.2768086E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.8063214       166.7231      0.0000000E+00
+ | timestep        =                    74
+ | dt PM123,PP     =  0.6464859      0.5882093      5.5410933E-02
+ | dt v            =   4.898934    
+ | cur_checkpoint  =     26  0.1662000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1213.093     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.374714    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.8100001E-02  2.8100001E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_73.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    75
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.2402002      0.1662002    
+ a         :  0.8063214      0.8319036      0.8574857    
+ expansion :  5.9667762E-02
+ dt        :  6.1611108E-02
+ dt_a      :   100.0000    
+ dt_e      :  0.1032437    
+ dt_pm1    :  0.6464859    
+ dt_pm2    :  0.5882093    
+ dt_pp     :  5.5410933E-02
+ dt_vmax   :   4.898934    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  3.0805554E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7601.070    
+   vmax =   2.589315       2.389854    
+   real time =  5.2000000E-03 secs
+ 
+ PM2
+   vmax =   2.600759       2.404367    
+   f2max =   11428.21    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   2.721537       2.482995    
+   f2max =   239624.9    
+   real time =  1.5900001E-02 secs
+ 
+ vmax   2.721537       2.482995    
+ drift
+   dt_mid =  3.0805554E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.8574857       166.7847      0.0000000E+00
+ | timestep        =                    75
+ | dt PM123,PP     =  0.6243685      0.5638520      5.2699525E-02
+ | dt v            =   4.629737    
+ | cur_checkpoint  =     27  9.6600004E-02
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1140.710     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.482995    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.8400000E-02  2.8400000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_74.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    76
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  0.1662002      9.6600175E-02
+ a         :  0.8574857      0.8846976      0.9119094    
+ expansion :  5.9681032E-02
+ dt        :  5.7940319E-02
+ dt_a      :   100.0000    
+ dt_e      :  9.7076468E-02
+ dt_pm1    :  0.6243685    
+ dt_pm2    :  0.5638520    
+ dt_pp     :  5.2699525E-02
+ dt_vmax   :   4.629737    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  2.8970160E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7718.847    
+   vmax =   2.735665       2.505881    
+   real time =  5.2000000E-03 secs
+ 
+ PM2
+   vmax =   2.746079       2.519464    
+   f2max =   11929.46    
+   real time =  1.5000000E-03 secs
+ 
+ PP
+   vmax =   2.818727       2.599102    
+   f2max =   232780.5    
+   real time =  1.7200001E-02 secs
+ 
+ vmax   2.818727       2.599102    
+ drift
+   dt_mid =  2.8970160E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.9119094       166.8427      0.0000000E+00
+ | timestep        =                    76
+ | dt PM123,PP     =  0.6031296      0.5409331      5.1474493E-02
+ | dt v            =   4.470102    
+ | cur_checkpoint  =     28  4.5000002E-02
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1072.631     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.599102    
+ ------------------------------------------------------------------------------
+ total elapsed time =  2.9800000E-02  2.9800000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_75.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    77
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  9.6600175E-02  4.4999242E-02
+ a         :  0.9119094      0.9344239      0.9569384    
+ expansion :  4.7055326E-02
+ dt        :  4.2950403E-02
+ dt_a      :   100.0000    
+ dt_e      :  9.1445565E-02
+ dt_pm1    :  0.6031296    
+ dt_pm2    :  0.5409331    
+ dt_pp     :  5.1474493E-02
+ dt_vmax   :   4.470102    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  2.1475201E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7820.748    
+   vmax =   2.829633       2.616978    
+   real time =  5.2000000E-03 secs
+ 
+ PM2
+   vmax =   2.835672       2.626869    
+   f2max =   12364.98    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   2.833946       2.663946    
+   f2max =   247517.2    
+   real time =  2.1299999E-02 secs
+ 
+ vmax   2.833946       2.663946    
+ drift
+   dt_mid =  2.1475201E-02
+   elapsed time =  3.0000001E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.9569384       166.8856      0.0000000E+00
+ | timestep        =                    77
+ | dt PM123,PP     =  0.5849411      0.5216460      4.9323391E-02
+ | dt v            =   4.446098    
+ | cur_checkpoint  =     29  3.1199999E-02
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1022.158     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.663946    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.3900000E-02  3.3900000E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_76.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    78
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  4.4999242E-02  3.1200171E-02
+ a         :  0.9569384      0.9633411      0.9697438    
+ expansion :  1.3204915E-02
+ dt        :  1.1483015E-02
+ dt_a      :   100.0000    
+ dt_e      :  9.0256475E-02
+ dt_pm1    :  0.5849411    
+ dt_pm2    :  0.5216460    
+ dt_pp     :  4.9323391E-02
+ dt_vmax   :   4.446098    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  5.7415073E-03
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7876.798    
+   vmax =   2.836928       2.668866    
+   real time =  4.3000001E-03 secs
+ 
+ PM2
+   vmax =   2.838260       2.671465    
+   f2max =   12604.84    
+   real time =  2.0000001E-03 secs
+ 
+ PP
+   vmax =   2.842040       2.679772    
+   f2max =   253804.1    
+   real time =  2.0199999E-02 secs
+ 
+ vmax   2.842040       2.679772    
+ drift
+   dt_mid =  5.7415073E-03
+   elapsed time =  3.9999999E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.9697438       166.8971      0.0000000E+00
+ | timestep        =                    78
+ | dt PM123,PP     =  0.5750673      0.5112953      4.8273802E-02
+ | dt v            =   4.433434    
+ | cur_checkpoint  =     30  0.0000000E+00
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   1008.661     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.679772    
+ ------------------------------------------------------------------------------
+ total elapsed time =  3.2499999E-02  3.2499999E-02 secs
+ Write xpos into /mnt/18T/output_2D/lc/3000_256_org/runtime/xpos_77.bin
+ 
+ -------------------------------------------------------
+ timestep    :                    79
+ tau         :  0.0000000E+00  0.0000000E+00
+ z         :  3.1200171E-02  5.9604645E-07
+ a         :  0.9697438      0.9848716      0.9999994    
+ expansion :  3.0255567E-02
+ dt        :  2.5966495E-02
+ dt_a      :   100.0000    
+ dt_e      :  9.0649568E-02
+ dt_pm1    :  0.5750673    
+ dt_pm2    :  0.5112953    
+ dt_pp     :  4.8273802E-02
+ dt_vmax   :   4.433434    
+ cur_powerpoint :                     1  0.0000000E+00
+ 
+ drift
+   dt_mid =  1.2983248E-02
+   elapsed time =  3.9999999E-04 secs
+ 
+ hoc
+   real time =  0.0000000E+00 secs
+ 
+ PM1
+   pm%f2max =   7915.517    
+   vmax =   2.849170       2.691135    
+   real time =  4.3000001E-03 secs
+ 
+ PM2
+   vmax =   2.855013       2.696924    
+   f2max =   12767.79    
+   real time =  1.6000000E-03 secs
+ 
+ PP
+   vmax =   2.895041       2.716065    
+   f2max =   319625.9    
+   real time =  2.6799999E-02 secs
+ 
+ vmax   2.895041       2.716065    
+ drift
+   dt_mid =  1.2983248E-02
+   elapsed time =  5.0000002E-04 secs
+ 
+ checkpoint
+   wrote                 65536 CDM particles
+ -------------------------------- CUBE info --------------------------------
+ | np              =                 65536
+ | a,t,tau         =  0.9999994       166.9231      0.0000000E+00
+ | timestep        =                    79
+ | dt PM123,PP     =  0.5680500      0.5040544      4.5068789E-02
+ | dt v            =   4.352271    
+ | cur_checkpoint  =     31  -9999.000    
+ | cur_powerpoint  =      1  0.0000000E+00
+ | mass_p          =   1.000000    
+ | box             =   3000.000     Mpc/h
+ | nnt             =                     4
+ | ncb             =                     4
+ | izip x,v        =    2    2
+ | h_0             =  0.6766000     *100 km/s/Mpc
+ | omega_m         =  0.3096415    
+ | omega_nu         =  0.0000000E+00
+ | omega_l         =  0.6903585    
+ | sigma_8         =  0.8211314    
+ | vsim2phys       =   978.1431     (km/s)/(1.0)
+ | sigma_vres      =   23.84594     (km/s)
+ | sigma_vi        =  0.0000000E+00 (simulation unit)
+ | z_i             =   200.0000    
+ | vz_max          =   2.716065    
+ ------------------------------------------------------------------------------
+ final_step                    31                    30
+ total time =  3.4971666E-02 mins
+ end in           78

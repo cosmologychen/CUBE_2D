@@ -9,9 +9,9 @@ program displacement
 
 
     integer :: ip,iq(2),i_dim,idx1(2),idx2(2),dx1(2),dx2(2)
-    integer(8) np,istat,nthreads,plan,iplan
+    integer(8) np,istat,plan,iplan
 
-    integer :: i,j,iteam,cur_checkpoint
+    integer :: i,j,iteam,cur_checkpoint,nthreads
     real :: pos0(2),pos1(2),dpos(2),kx(2),pdim(2),xi(10,0:nbin)
     real,allocatable :: rho_grid(:,:,:)
     real,allocatable :: dsp(:,:,:),xp(:,:)

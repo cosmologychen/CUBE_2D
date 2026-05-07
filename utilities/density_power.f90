@@ -45,6 +45,7 @@ program density_power
   ! do cur_checkpoint= 49,49
   ! do cur_checkpoint= n_checkpoint,n_checkpoint
   do cur_checkpoint= 1,n_checkpoint
+    if ( one_run_lightcone .and. cur_checkpoint /= n_checkpoint ) cycle
     sim%cur_checkpoint=cur_checkpoint
     print*, ''
     print*, '==========================================='
@@ -62,7 +63,7 @@ program density_power
     !$omp& private(l,pos1,iteam,idx1,idx2,dx1,dx2)
     do l=1,np
       iteam=omp_get_thread_num()+1
-      pos1=xp(:,l)*nic-0.5
+      pos1=xp(:,l)*nic
       idx1=floor(pos1)+1; idx2=idx1+1
       dx1=idx1-pos1;      dx2=1-dx1
       rho_grid(idx1(1),idx1(2),iteam)=rho_grid(idx1(1),idx1(2),iteam)+dx1(1)*dx1(2)
@@ -100,7 +101,7 @@ program density_power
 
     print*,'min',minval(rho1),'max',maxval(rho1),'mean',sum(rho1*1d0)/nw/nw;
 
-    print*,'Write delta_c into',output_name('delta_c')
+    print*,'Write delta_c into ',output_name('delta_c')
     open(11,file=output_name('delta_c'),status='replace',access='stream')
     write(11) rho1(:nw,:nw)
     close(11)

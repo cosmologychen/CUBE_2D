@@ -2,13 +2,19 @@
 module powerspectrum
     use omp_lib
     use parameters
-    integer(8),parameter :: nbin=nint(nyquist*sqrt(3.))
+    integer(8),parameter :: nbin=nint(nyquist*sqrt(2.))
 
     real        rho1(nw+2,nw)
-    complex     rho1k(nw/2+1,nw)
+    complex     rho1k(nyquist+1,nw)
     equivalence(rho1,rho1k)
 
 contains
+
+  ! 检测实数是否为无穷大
+  logical function is_inf(x)
+    real, intent(in) :: x
+    is_inf = (abs(x) > huge(x))
+  end function is_inf
 
 subroutine cross_power(xi,rhok1,rhok2,n_particle,n_interp)
   use omp_lib
@@ -16,12 +22,12 @@ subroutine cross_power(xi,rhok1,rhok2,n_particle,n_interp)
   integer i,j,ig,jg,ibin,n_interp
   integer(8) n_particle
   real kr,kx(2),rbin,C1k(2),Dk,amp11,amp12,amp21,amp22,xi(10,0:nbin)
-  complex rhok1(nw/2+1,nw),rhok2(nw/2+1,nw)
+  complex rhok1(nyquist+1,nw),rhok2(nyquist+1,nw)
 
   xi=0
   do j=1,nw
-    do i=1,nw/2+1
-        kx(2)=mod(j+nw/2-1,nw)-nw/2
+    do i=1,nyquist+1
+        kx(2)=mod(j+nyquist-1,nw)-nyquist
         kx(1)=i-1
         if (j==1 .and. i==1) cycle ! zero frequency
         kr=sqrt(kx(1)**2+kx(2)**2)
@@ -31,14 +37,23 @@ subroutine cross_power(xi,rhok1,rhok2,n_particle,n_interp)
         amp11=real(rhok1(i,j)*conjg(rhok1(i,j)))
         amp22=real(rhok2(i,j)*conjg(rhok2(i,j)))
         amp12=real(rhok1(i,j)*conjg(rhok2(i,j)))
-        ! amp21=real(rhok2(i,j)*conjg(rhok1(i,j)))
-        ! print *,'k=',kr,amp11
+        !如果出现nan或者inf，报错
+        if (isnan(amp11) .or. isnan(amp22) .or. isnan(amp12) .or. is_inf(amp11) .or. is_inf(amp22) .or. is_inf(amp12)) then
+          print*,'kr',kr
+          print*,'i',i,'j',j
+          print*,rhok1(i,j),rhok2(i,j)
+          print*,'amp11',amp11
+          print*,'amp22',amp22
+          print*,'amp12',amp12
+          print*,'nan'
+          stop
+        endif
         if (n_interp==1) then ! NGP
-        C1k=1
+          C1k=1
         elseif (n_interp==2) then ! CIC
-        C1k=1-(2./3.)*sin(pi*kx/nw)**2
+          C1k=1-(2./3.)*sin(pi*kx/nw)**2
         elseif (n_interp==3) then ! TSC
-        C1k=1-sin(pi*kx/nw)**2+(2./15.)*sin(pi*kx/nw)**4
+          C1k=1-sin(pi*kx/nw)**2+(2./15.)*sin(pi*kx/nw)**4
         endif
         Dk=(C1k(1)*C1k(2))/n_particle
         ! print*,kr,amp11,amp22,amp12,Dk
@@ -62,16 +77,8 @@ subroutine cross_power(xi,rhok1,rhok2,n_particle,n_interp)
     xi(7,:)=xi(7,:)/xi(1,:) ! raw power22 - Dk
     xi(8,:)=xi(7,:)
     xi(9 ,:)=xi(9 ,:)/xi(1,:)
-    ! xi(10,:)=xi(10,:)/xi(1,:)
+    xi(10,:)=xi(10,:)/xi(1,:)
 
-    call pk_correction(xi,n_interp,5,3)
-    call pk_correction(xi,n_interp,5,3)
-    call pk_correction(xi,n_interp,5,3)
-    call pk_correction(xi,n_interp,5,3)
-    call pk_correction(xi,n_interp,8,3)
-    call pk_correction(xi,n_interp,8,3)
-    call pk_correction(xi,n_interp,8,3)
-    call pk_correction(xi,n_interp,8,3)
     ! divide and normalize
     xi(2 ,:)=xi(2 ,:)*(2 * pi)/box ! k_phys  
     xi(3 ,:)=xi(3 ,:)*(box**2) ! power11_phys
@@ -94,10 +101,12 @@ subroutine auto_power(xi,n_particle,n_interp)
   integer(8) n_particle
   real kr,kx(2),sincx,sincy,sinc,rbin,C1k(2),Dk,amp11,xi(10,0:nbin)
 
+  print*,'auto_power'
+
   xi=0
-  do j=1,ngic
+  do j=1,nw
     do i=1,nyquist+1
-        kx(2)=mod(j+nyquist-1,ngic)-nyquist
+        kx(2)=mod(j+nyquist-1,nw)-nyquist
         kx(1)=i-1
         if (j==1 .and. i==1) cycle ! zero frequency
         kr=sqrt(kx(1)**2+kx(2)**2)

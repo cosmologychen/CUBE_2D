@@ -2,11 +2,12 @@ program new_void
   use parameters
   implicit none
 
+  real,parameter :: b_link=0.20 ! linking length for FoF
   real :: min_r,  b_link_r,np_void_min
   integer :: void_np,  nvoids, nvoids_r
 
   integer(8) i,j,ii,jj,l,cur_checkpoint,ip,ip1,ip2,np_void,idl(2),cm(2),rm,iq(2)
-  real,allocatable :: xp(:,:),triangles(:,:,:),down_r(:),rho(:,:,:)
+  real,allocatable :: xp(:,:),triangles(:,:,:),down_r(:),rho(:,:)
   integer(8),allocatable :: hoc(:,:),ll(:),counts(:,:),ll_void(:),llgp(:),hcgp(:),ecgp(:),iph_void_all(:),iph_void(:)
   integer :: iunit, iostat
   character(len=400) :: cmd
@@ -154,7 +155,7 @@ program new_void
 
 
   allocate(iph_void_all(sim%np),iph_void(sim%np))
-  np_iso = 0; np_head = 0; iph_void=0; iph_void_all=0pdrift
+  np_iso = 0; np_head = 0; iph_void=0; iph_void_all=0
   do i=1,sim%np
     if (hcgp(i)==i) then
       np_iso=np_iso+1

@@ -9,24 +9,22 @@ program displacement
 
 
 
-
-  integer :: ip,iq(2),i_dim,idx1(2),idx2(2)
+  integer,parameter,dimension(6) :: smooth_ks=[200,20,15,13,12,10]
+  integer :: ip,iq(2),i_dim,idx1(2),idx2(2),s_k
   real :: dx1(2),dx2(2)
-  integer(8) np,istat,nthreads,plan,iplan
+  integer(8) np,istat,plan,iplan
 
-  integer :: i,j,iteam,cur_checkpoint
+  integer :: i,j,iteam,cur_checkpoint,nthreads
   real :: pos0(2),pos1(2),dpos(2),kx(2),pdim(2),xi(10,0:nbin)
   real,allocatable :: rho_grid(:,:,:)
   real,allocatable :: dsp(:,:,:),xp(:,:)
-  complex,allocatable :: cdiv(:,:),cphi(:,:),rhok_L(:,:),rhok_R(:,:),rhok_N(:,:)
+  complex,allocatable :: cdiv(:,:),cphi(:,:),rhok_L(:,:),rhok_R(:,:),rhok_N(:,:),grid_sk(:,:)
 
-  ! print*,modulo(512-1,512)+1,modulo(128-1,512)+1,modulo(0-1,512)+1
-  ! stop
-
+  if ( one_run_lightcone ) stop
   print*, 'Displacement field analysis on resolution:'
   print*, 'ng=',ng
   print*, 'checkpoint at:'
-  open(16,file='../z_checkpoint.txt',status='old')
+  open(16,file='./z_checkpoint.txt',status='old')
   do i=1,nmax_redshift
     read(16,end=71,fmt='(f8.4)') z_checkpoint(i)
     print*, z_checkpoint(i)
@@ -41,18 +39,48 @@ program displacement
   call sfftw_init_threads(istat)
   print*, '    sfftw_init_threads status',istat
   call sfftw_plan_with_nthreads(nthreads)
-  call sfftw_plan_dft_r2c_2d( plan,ng,ng,rho1k,rho1k,FFTW_MEASURE)
-  call sfftw_plan_dft_c2r_2d(iplan,ng,ng,rho1k,rho1k,FFTW_MEASURE)
+  call sfftw_plan_dft_r2c_2d( plan,ngic,ngic,rho1k,rho1k,FFTW_MEASURE)
+  call sfftw_plan_dft_c2r_2d(iplan,ngic,ngic,rho1k,rho1k,FFTW_MEASURE)
 
+  sim%cur_checkpoint = 1
+  open(11,file=output_name('delta_L'),status='old',access='stream')
+  read(11) rho1(1:ngic,1:ngic)
+  call sfftw_execute( plan)
+  allocate(rhok_L(ngic/2+1,ngic))
+  rhok_L=rho1k/real(ngic*ngic)
+  do cur_checkpoint= 1,n_checkpoint !2,-1
 
-  do cur_checkpoint= 1,6!n_checkpoint,n_checkpoint !2,-1
     print*, ''
     print*,'==========================================================='
 
+    print*, 'Start analyzing redshift ',z2str(z_checkpoint(cur_checkpoint))
 
+    sim%cur_checkpoint=cur_checkpoint
+    open(11,file=output_name('info'),access='stream'); read(11) sim; close(11)
+    np = sim%np
+    open(11,file=output_name('delta_c'),status='old',access='stream')
+    read(11) rho1(1:ngic,1:ngic)
+    call sfftw_execute( plan)
+    allocate(rhok_N(ngic/2+1,ngic))
+    rhok_N=rho1k/real(ngic*ngic)
+    call cross_power(xi,rhok_L,rhok_N,np,2)
+    print*,'   save: ',output_name('Cpower_LN')
+    open(11,file=output_name('Cpower_LN'),status='replace',access='stream')
+    write(11) xi
+    close(11)
+    deallocate(rhok_N)
+    cycle
+  enddo
+  stop
+
+  ! do cur_checkpoint= 1,6
+  do cur_checkpoint= 1,n_checkpoint !2,-1
+    print*, ''
+    print*,'==========================================================='
 
     print*, 'Start analyzing redshift ',z2str(z_checkpoint(cur_checkpoint))
 
+    s_k = smooth_ks(cur_checkpoint)
     sim%cur_checkpoint=cur_checkpoint
     open(11,file=output_name('info'),access='stream'); read(11) sim; close(11)
     np = sim%np
@@ -76,7 +104,7 @@ program displacement
     write(11) xi
     close(11)
     deallocate(rhok_N,rhok_L)
-    ! cycle
+    cycle
 #endif
     allocate(xp(2,sim%np))
     open(11,file=output_name('xp'),access='stream'); read(11) xp(:,:sim%np); close(11)
@@ -106,6 +134,36 @@ program displacement
     print*,'    Write dsp into file:'
     print*,'      save:',output_name('dsp_D')
     open(15,file=output_name('dsp_D'),status='replace',access='stream')
+    write(15) dsp
+    close(15)
+
+
+    print*,''
+    print*,'    Smoothing dsp'
+    allocate(grid_sk(ng/2+1,ng))
+
+    !$omp paralleldo default(shared) &
+    !$omp& private(i,j,kx,pdim)
+    do j=1,ng
+    do i=1,ng/2+1
+      if (j == 1 .and. i == 1) cycle
+      kx=modulo([i,j]+ng/2-1,ng)-ng/2 !k
+      grid_sk(i,j)=exp((-sqrt(sum(kx**2))/(2*s_k)))
+    enddo
+    enddo
+    !$omp endparalleldo
+    do i_dim=1,2
+      ! print*,'     working on dim',int(i_dim,1)
+      rho1(1:ng,1:ng)=dsp(i_dim,1:ng,1:ng)
+      call sfftw_execute( plan) ! Fourier transform
+      rho1k=rho1k*grid_sk
+      call sfftw_execute(iplan)
+      dsp(i_dim,1:ng,1:ng)=rho1(1:ng,1:ng)
+    enddo ! i_dim
+    
+    print*,'    Write Smoothed dsp into file:'
+    print*,'      save:',output_name('dsp_sD')
+    open(15,file=output_name('dsp_sD'),status='replace',access='stream')
     write(15) dsp
     close(15)
 
@@ -211,9 +269,9 @@ program displacement
     close(15)
     deallocate(dsp)
     
-
-    call decompose_Mesh_FFT('D')
-    ! call decompose_Mesh_D('D')
+    call dep2delta_e('E','E',4,istat)
+    ! call decompose_Mesh_FFT('D')
+    call decompose_Mesh_D('D')
 
 
     ! ! call dep2delta_e('E','E',4,istat)
@@ -221,50 +279,50 @@ program displacement
     ! call dep2delta_e('D','uD',4,istat)
     ! call dep2delta_e('D','jD',4,istat)
     ! call dep2delta_e('D','kD',4,istat)
-#ifdef Cpower
-    sim%cur_checkpoint = 1
-    open(11,file=output_name('delta_L'),status='old',access='stream')
-    read(11) rho1(1:ng,1:ng)
-    call sfftw_execute( plan)
-    allocate(rhok_L(ng/2+1,ng))
-    rhok_L=rho1k/real(ng*ng)
-    sim%cur_checkpoint=cur_checkpoint
+! #ifdef Cpower
+!     sim%cur_checkpoint = 1
+!     open(11,file=output_name('delta_L'),status='old',access='stream')
+!     read(11) rho1(1:ng,1:ng)
+!     call sfftw_execute( plan)
+!     allocate(rhok_L(ng/2+1,ng))
+!     rhok_L=rho1k/real(ng*ng)
+!     sim%cur_checkpoint=cur_checkpoint
 
-    open(11,file=output_name('kD_q'),status='old',access='stream')
-    read(11) rho1(1:ng,1:ng)
-    call sfftw_execute( plan)
-    allocate(rhok_N(ng/2+1,ng))
-    rhok_N=rho1k/real(ng*ng)
-    call cross_power(xi,rhok_L,rhok_N,np,2)
-    print*,'   save: ',output_name('Cpower_Lkq')
-    open(11,file=output_name('Cpower_Lkq'),status='replace',access='stream')
-    write(11) xi
-    close(11)
-    deallocate(rhok_N,rhok_L)
-    ! cycle
-#endif
-#ifdef Cpower
-    sim%cur_checkpoint = 1
-    open(11,file=output_name('delta_L'),status='old',access='stream')
-    read(11) rho1(1:ng,1:ng)
-    call sfftw_execute( plan)
-    allocate(rhok_L(ng/2+1,ng))
-    rhok_L=rho1k/real(ng*ng)
-    sim%cur_checkpoint=cur_checkpoint
+!     open(11,file=output_name('kD_q'),status='old',access='stream')
+!     read(11) rho1(1:ng,1:ng)
+!     call sfftw_execute( plan)
+!     allocate(rhok_N(ng/2+1,ng))
+!     rhok_N=rho1k/real(ng*ng)
+!     call cross_power(xi,rhok_L,rhok_N,np,2)
+!     print*,'   save: ',output_name('Cpower_Lkq')
+!     open(11,file=output_name('Cpower_Lkq'),status='replace',access='stream')
+!     write(11) xi
+!     close(11)
+!     deallocate(rhok_N,rhok_L)
+!     ! cycle
+! #endif
+! #ifdef Cpower
+!     sim%cur_checkpoint = 1
+!     open(11,file=output_name('delta_L'),status='old',access='stream')
+!     read(11) rho1(1:ng,1:ng)
+!     call sfftw_execute( plan)
+!     allocate(rhok_L(ng/2+1,ng))
+!     rhok_L=rho1k/real(ng*ng)
+!     sim%cur_checkpoint=cur_checkpoint
 
-    open(11,file=output_name('uD_q'),status='old',access='stream')
-    read(11) rho1(1:ng,1:ng)
-    call sfftw_execute( plan)
-    allocate(rhok_N(ng/2+1,ng))
-    rhok_N=rho1k/real(ng*ng)
-    call cross_power(xi,rhok_L,rhok_N,np,2)
-    print*,'   save: ',output_name('Cpower_Luq')
-    open(11,file=output_name('Cpower_Luq'),status='replace',access='stream')
-    write(11) xi
-    close(11)
-    deallocate(rhok_N,rhok_L)
-    ! cycle
-#endif
+!     open(11,file=output_name('uD_q'),status='old',access='stream')
+!     read(11) rho1(1:ng,1:ng)
+!     call sfftw_execute( plan)
+!     allocate(rhok_N(ng/2+1,ng))
+!     rhok_N=rho1k/real(ng*ng)
+!     call cross_power(xi,rhok_L,rhok_N,np,2)
+!     print*,'   save: ',output_name('Cpower_Luq')
+!     open(11,file=output_name('Cpower_Luq'),status='replace',access='stream')
+!     write(11) xi
+!     close(11)
+!     deallocate(rhok_N,rhok_L)
+!     ! cycle
+! #endif
 ! #ifdef Cpower
 !   sim%cur_checkpoint=cur_checkpoint
 !   open(11,file=output_name('delta_c'),status='old',access='stream')
@@ -343,266 +401,11 @@ program displacement
 
   contains
 
-  ! subroutine full_delta1(namespace,rhoe,n_min,state)
-  !   implicit none
-  !   integer, intent(in)  :: n_min     ! 至少需要 n 个非零邻居
-  !   real,intent(inout) :: rhoe(ng,ng)
-  !   character(len=*), intent(in) :: namespace
-  !   integer(8) , intent(inout) :: state
 
-  !   integer :: i, j, di, dj, ii, jj, n, count_0, count_0_prev,c_count
-  !   real :: sum_d
-  !   real delta(ng, ng)
-
-  !   if (n_min > 8) then
-  !       print *, "n_min too large, exiting subroutine."
-  !       return
-  !   end if
-
-  !   delta = 0
-  !   open(15,file=output_name(namespace),status='old',access='stream')
-  !   read(15) delta
-  !   close(15)
-
-  !   delta = delta+1
-  !   print*,'    org: ',minval(delta),maxval(delta), sum(delta*1d0)
-  !   count_0 = -1
-  !   c_count = 0
-
-  !   do  
-  !       c_count = c_count + 1
-  !       count_0_prev = count_0
-  !       count_0 = 0
-
-  !       !!! 
-  !       !$omp paralleldo default(shared) &
-  !       !!! 
-  !       !$omp& private(i,j,di,dj,ii,jj,n,sum_d) reduction(+:count_0)
-  !       do i = 1, ng
-  !       do j = 1, ng
-  !           if (delta(i,j) == 0.0) then
-  !               n = 0
-  !               sum_d = 0.0
-  !               do di = -1, 1
-  !                   ii = modulo(i+di-1, ng)+1
-  !               do dj = -1, 1
-  !                   if (dj == 0 .and. di == 0)  cycle
-  !                   jj = modulo(j+dj-1, ng)+1
-  !                   if (delta(ii,jj) /= 0.0) then
-  !                       sum_d = sum_d + delta(ii,jj)
-  !                       n = n + 1
-  !                   endif
-  !               enddo
-  !               enddo
-
-  !               if (n >= n_min) then
-  !                   delta(i,j) = sum_d / real(n)
-  !               else
-  !                   count_0 = count_0 + 1
-  !                   ! if (c_count == 24) then
-  !                   !     print*,''
-  !                   !     print*,'+++++++++++++++++++++++'
-  !                   !     print*,'i,j',i,j
-
-  !                   !     do di = -1, 1
-  !                   !         ii = modulo(i+di-1, ng)+1
-  !                   !         print*,'    ii',ii,i+di
-  !                   !     do dj = -1, 1
-  !                   !         if (dj == 0 .and. di == 0)  cycle
-  !                   !         jj = modulo(j+dj-1, ng)+1
-  !                   !         print*,'        jj',jj,j+dj
-  !                   !         print*,'            d',delta(ii,jj)
-  !                   !         if (delta(ii,jj) /= 0.0) then
-  !                   !             sum_d = sum_d + delta(ii,jj)
-  !                   !             n = n + 1
-  !                   !         end if
-  !                   !     enddo
-  !                   !     enddo
-  !                   !     if (count_0 > 10) stop
-  !                   ! endif
-  !               endif
-  !           endif
-  !       enddo
-  !       enddo
-  !       !!! 
-  !       !$omp endparalleldo
-
-  !       ! 停止条件
-  !       if (count_0 == 0) then
-  !           state = 1
-  !           print*,'    new: ',minval(delta),maxval(delta), sum(delta*1d0)
-  !           print*,c_count,'cycles'
-  !           print*,'    write full_rho '//namespace//' into'
-  !           print*,'        ',output_name(namespace//'f')
-  !           open(16,file=output_name(namespace//'f'),status='replace',access='stream')
-  !           write(16) delta-1
-  !           close(16)
-  !           exit
-  !       else if (count_0 == count_0_prev) then
-  !           print *, 'Error:full_rho '//namespace//' stagnated, still', count_0, " zeros left in ",c_count,'cycles'
-  !           state = 0
-  !           stop 'Error in full_delta'
-  !       end if
-  !   enddo
-
-  !   rhoe = rhoe/delta
-  !   print*,''
-  !   print*,'    compute and write into'
-  !   print*,'        ',output_name(namespace//'e')
-  !   print*,'    ',minval(rhoe),maxval(rhoe),sum(rhoe*1d0)
-  !   open(16,file=output_name(namespace//'e'),status='replace',access='stream')
-  !   write(16) rhoe
-  !   close(16)
-  ! endsubroutine
-
-  ! subroutine full_rho_Conservation(namespace,rho,n_min,state)
-  !   implicit none
-  !   integer, intent(in)  :: n_min     ! 至少需要 n 个非零邻居
-  !   character(len=*), intent(in) :: namespace
-  !   real, intent(out) :: rho(ng, ng)
-  !   integer(8) , intent(inout) :: state
-
-  !   integer :: ilayer,i, j, di, dj, ii, jj, n, count_0, count_0_prev,c_count
-  !   real :: sum_d
-
-  !   if (n_min > 8 .or. n_min < 2) then
-  !       print *, "bad n_min = ",n_min, "exiting subroutine."
-  !       return
-  !   end if
-
-  !   print*,'    org: ',minval(rho),maxval(rho), sum(rho*1d0)
-  !   count_0 = -1
-  !   c_count = 0
-
-  !   do  
-  !       c_count = c_count + 1
-  !       count_0_prev = count_0
-  !       count_0 = 0
-
-  !       do ilayer = 0, 3
-  !       !!! 
-  !       !$omp paralleldo default(shared) &
-  !       !!! 
-  !       !$omp& private(i,j,di,dj,ii,jj,n,sum_d) reduction(+:count_0)
-  !       do i = 1+ilayer, ng, 4
-  !       do j = 1, ng
-  !           if (rho(i,j) == 0.0) then
-  !               n = 0
-  !               sum_d = 0.0
-  !               do di = -1, 1
-  !                   ii = modulo(i+di-1, ng)+1
-  !               do dj = -1, 1
-  !                   if (dj == 0 .and. di == 0)  cycle
-  !                   jj = modulo(j+dj-1, ng)+1
-  !                   if (rho(ii,jj) /= 0.0) then
-  !                       sum_d = sum_d + rho(ii,jj)
-  !                       n = n + 1
-  !                   endif
-  !               enddo
-  !               enddo
-
-  !               if (n >= n_min) then
-
-  !                   rho(i,j) = sum_d / real(n)
-  !                   do di = -1, 1
-  !                       ii = modulo(i+di-1, ng)+1
-  !                   do dj = -1, 1
-  !                       if (dj == 0 .and. di == 0)  cycle
-  !                       jj = modulo(j+dj-1, ng)+1
-  !                       if (rho(ii,jj) /= 0.0) then
-  !                           rho(ii,jj) = rho(ii,jj)*(real(n-1)/ real(n))
-  !                       endif
-  !                   enddo
-  !                   enddo
-  !               else
-  !                   count_0 = count_0 + 1
-  !                   ! if (c_count == 24) then
-  !                   !     print*,''
-  !                   !     print*,'+++++++++++++++++++++++'
-  !                   !     print*,'i,j',i,j
-
-  !                   !     do di = -1, 1
-  !                   !         ii = modulo(i+di-1, ng)+1
-  !                   !         print*,'    ii',ii,i+di
-  !                   !     do dj = -1, 1
-  !                   !         if (dj == 0 .and. di == 0)  cycle
-  !                   !         jj = modulo(j+dj-1, ng)+1
-  !                   !         print*,'        jj',jj,j+dj
-  !                   !         print*,'            d',rho(ii,jj)
-  !                   !         if (rho(ii,jj) /= 0.0) then
-  !                   !             sum_d = sum_d + rho(ii,jj)
-  !                   !             n = n + 1
-  !                   !         end if
-  !                   !     enddo
-  !                   !     enddo
-  !                   !     if (count_0 > 10) stop
-  !                   ! endif
-  !               endif
-  !           endif
-  !       enddo
-  !       enddo
-  !       !!! 
-  !       !$omp endparalleldo
-  !       enddo
-
-  !       ! 停止条件
-  !       if (count_0 == 0) then
-  !           state = 1
-  !           print*,'    new: ',minval(rho),maxval(rho), sum(rho*1d0)
-  !           print*,c_count,'cycles'
-  !           print*,'    write full_rho '//namespace//' into'
-  !           print*,'        ',output_name(namespace//'fC')
-  !           open(16,file=output_name(namespace//'fC'),status='replace',access='stream')
-  !           write(16) rho-1
-  !           close(16)
-  !           exit
-  !       else if (count_0 == count_0_prev) then
-  !           print *, 'Error:full_rho '//namespace//' stagnated, still', count_0, " zeros left in ",c_count,'cycles'
-  !           state = 0
-  !           stop 'Error in full_rho'
-  !       end if
-  !   end do
-  ! endsubroutine
-
-  ! subroutine full_delta_Conservation(namespace,rhoe,n_min,state)
-  !   implicit none
-  !   integer, intent(in)  :: n_min     ! 至少需要 n 个非零邻居
-  !   character(len=*), intent(in) :: namespace
-  !   real, intent(inout) :: rhoe(ng, ng)
-  !   integer(8) , intent(inout) :: state
-
-  !   integer :: i, j, di, dj, ii, jj, n, count_0, count_0_prev,c_count
-  !   real :: sum_d
-  !   real :: delta(ng, ng)
-
-  !   if (n_min > 8 .or. n_min < 2) then
-  !       print *, "bad n_min = ",n_min, "exiting subroutine."
-  !       return
-  !   end if
-
-  !   delta = 0.0
-  !   open(15,file=output_name(namespace),status='old',access='stream')
-  !   read(15) delta
-  !   close(15)
-
-  !   delta = delta+1
-  !   call full_rho_Conservation(namespace,delta,n_min,state)
-  !   call full_rho_Conservation('delta_E',rhoe,n_min,state)
-  !   rhoe = rhoe/delta
-
-  !   print*,''
-  !   print*,'    compute and write into'
-  !   print*,'        ',output_name(namespace//'eC')
-  !   print*,'    ',minval(rhoe),maxval(rhoe),sum(rhoe*1d0)
-  !   open(16,file=output_name(namespace//'eC'),status='replace',access='stream')
-  !   write(16) rhoe
-  !   close(16)
-  ! endsubroutine
-
-  subroutine dep2delta_e(name1,name2,n_min,state)
+  subroutine dep2delta_e(dsp_name,rho_name,n_min,state)
     implicit none
     integer, intent(in)  :: n_min     ! 至少需要 n 个非零邻居
-    character(len=*), intent(in) :: name1,name2
+    character(len=*), intent(in) :: dsp_name,rho_name
     real rhoe(ng,ng)
     integer(8) , intent(inout) :: state
 
@@ -620,20 +423,20 @@ program displacement
     end if
 
     print*,''
-    print*, 'CIC interpolation'//name2//' by dsp_'//name1
+    print*, 'CIC interpolation'//rho_name//' by dsp_'//dsp_name
 
     allocate(dsp(2,ng,ng))
     print*,size(rho1k(:,1)),size(rho1k(1,:))
     dsp = 0
     print*,'  read:'
-    print*,'    ',output_name('dsp_'//name1)
-    print*,'    ',output_name(name2//'_q')
-    open(15,file=output_name('dsp_'//name1),status='old',access='stream')
+    print*,'    ',output_name('dsp_'//dsp_name)
+    print*,'    ',output_name(rho_name//'_q')
+    open(15,file=output_name('dsp_'//dsp_name),status='old',access='stream')
     read(15) dsp
     close(15)
 
     rho1=0
-    open(15,file=output_name(name2//'_q'),status='old',access='stream')
+    open(15,file=output_name(rho_name//'_q'),status='old',access='stream')
     read(15) rho1(1:ng,1:ng)
     close(15)
 
@@ -702,20 +505,17 @@ program displacement
 
     print*,''
     print*,'    delta : ',minval(delta-1),maxval(delta-1),sum((delta-1)*1d0)
-    print*,'      save:',output_name('delta_c'//name1)
-    open(16,file=output_name('delta_c'//name1),status='replace',access='stream')
+    print*,'      save:',output_name('delta_c'//dsp_name)
+    open(16,file=output_name('delta_c'//dsp_name),status='replace',access='stream')
     write(16) delta-1
     close(16)
 
-    print*,''
-    print*,'    compute and write into'
-    print*,'      save:',output_name(name2//name1//'_x')
-    open(16,file=output_name(name2//name1//'_x'),status='replace',access='stream')
+
+    print*,'    rho_c: ',minval(rhoe),maxval(rhoe),sum(rhoe*1d0)
+    print*,'      save:',output_name(rho_name//dsp_name//'_x')
+    open(16,file=output_name(rho_name//dsp_name//'_x'),status='replace',access='stream')
     write(16) rhoe
     close(16)
-
-
-
     count_bad = 0
     do i = 1, ng
     do j = 1, ng
@@ -727,13 +527,14 @@ program displacement
       endif
     enddo
     enddo   
-    print*,'    delta: ',minval(delta),maxval(delta), sum(delta*1d0)
+    print*,''
     print*,'    rho_c: ',minval(rhoe),maxval(rhoe),sum(rhoe*1d0)
-    print*,'    bad  : ',count_bad  
+    print*,'    compute and write into'
     deallocate(delta)
 
     print*,''
     print*,'    org: ',minval(rhoe),maxval(rhoe), sum(rhoe*1d0)
+    print*,'    bad  : ',count_bad  
     count_bad = -1
     c_count = 0
 
@@ -742,13 +543,13 @@ program displacement
       count_bad_prev = count_bad
       count_bad = 0
 
-      ! do ilayer = 0, 3
+      do ilayer = 1, 4
       !!! 
       !$omp paralleldo default(shared) &
       !!! 
       !$omp& private(i,j,di,dj,ii,jj,n,sum_d) reduction(+:count_bad)
-      do i = 1, ng
-      ! do i = 1+ilayer, ng, 4
+      ! do i = 1, ng
+      do i = ilayer, ng, 4
       do j = 1, ng
         if (is_bad(rhoe(i,j))) then
           n = 0
@@ -769,34 +570,13 @@ program displacement
             rhoe(i,j) = sum_d / real(n)
           else
             count_bad = count_bad + 1
-            ! if (c_count == 24) then
-            !     print*,''
-            !     print*,'+++++++++++++++++++++++'
-            !     print*,'i,j',i,j
-
-            !     do di = -1, 1
-            !         ii = modulo(i+di-1, ng)+1
-            !         print*,'    ii',ii,i+di
-            !     do dj = -1, 1
-            !         if (dj == 0 .and. di == 0)  cycle
-            !         jj = modulo(j+dj-1, ng)+1
-            !         print*,'        jj',jj,j+dj
-            !         print*,'            d',rhoe(ii,jj)
-            !         if (rhoe(ii,jj) /= 0.0) then
-            !             sum_d = sum_d + rhoe(ii,jj)
-            !             n = n + 1
-            !         end if
-            !     enddo
-            !     enddo
-            !     if (count_bad > 10) stop
-            ! endif
           endif
         endif
       enddo
       enddo
       !!! 
       !$omp endparalleldo
-      ! enddo !end ilayer
+      enddo !end ilayer
 
       ! 停止条件
       if (count_bad == 0) then
@@ -805,7 +585,7 @@ program displacement
         state = 1
         exit
       else if (count_bad == count_bad_prev) then
-        print *, 'Error:full '//name2//name1//'_x stagnated, still', count_bad, " zeros left in ",c_count,'cycles'
+        print *, 'Error:full '//rho_name//dsp_name//'_x stagnated, still', count_bad, " zeros left in ",c_count,'cycles'
         state = 0
         stop 'Error in full_rhoe'
       end if
@@ -814,8 +594,8 @@ program displacement
 
     print*,''
     print*,'    compute and write into'
-    print*,'      save:',output_name(name2//name1//'_xf')
-    open(16,file=output_name(name2//name1//'_xf'),status='replace',access='stream')
+    print*,'      save:',output_name(rho_name//dsp_name//'_xf')
+    open(16,file=output_name(rho_name//dsp_name//'_xf'),status='replace',access='stream')
     write(16) rhoe
     close(16)
   endsubroutine
@@ -1023,45 +803,6 @@ program displacement
     close(19)
     deallocate(omega,A_mesh)
   endsubroutine decompose_Mesh_FFT
-
-  ! subroutine decompose_A(A, kappa, gamma1, gamma2, omega, l1, l2, det_A)
-  !     IMPLICIT NONE
-  !     real(8), intent(in)  :: A(2, 2)     ! 输入 2x2 矩阵
-  !     real(8), intent(out) :: kappa       ! 扩张/收缩参数
-  !     real(8), intent(out) :: gamma1      ! 剪切分量 1
-  !     real(8), intent(out) :: gamma2      ! 剪切分量 2
-  !     real(8), intent(out) :: omega       ! 旋转分量
-  !     real(8), intent(out) :: l1, l2      ! 特征值
-  !     real(8), intent(out) :: det_A          ! 给出行列式
-    
-  !     real(8) :: trace_A
-  !     real(8) :: a11, a12, a21, a22
-    
-  !     ! 提取矩阵元素
-  !     a11 = A(1, 1)
-  !     a12 = A(1, 2)
-  !     a21 = A(2, 1)
-  !     a22 = A(2, 2)
-    
-  !     ! 计算迹 (trace) 和行列式 (determinant)
-  !     trace_A = a11 + a22
-  !     det_A = a11 * a22 - a12 * a21
-  !     ! print*, det_A
-    
-  !     ! 计算 kappa (扩张/收缩)
-  !     kappa = 1.0D0 - 0.5D0 * trace_A
-    
-  !     ! 计算 gamma1 和 gamma2 (剪切分量)
-  !     gamma1 = 0.5D0 * (a22 - a11)
-  !     gamma2 = 0.5D0 * (a12 + a21)
-    
-  !     ! 计算 omega (旋转分量)
-  !     omega = 0.5D0 * (a21 - a12)
-    
-  !     ! 计算特征值 l1 和 l2
-  !     l1 = 0.5D0 * (trace_A + SQRT(trace_A**2 - 4.0D0 * det_A))
-  !     l2 = 0.5D0 * (trace_A - SQRT(trace_A**2 - 4.0D0 * det_A))
-  ! endsubroutine decompose_A
 
   logical function is_bad(val)
     use, intrinsic :: ieee_arithmetic

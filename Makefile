@@ -14,6 +14,7 @@ utilities:
 	@echo "Building utilities..."
 	$(MAKE) -C utilities
 
+# all: main.x
 main.x: $(OBJFILE)
 	@echo "Link files:"
 	$(FC) $(XFLAG) $(OPTIONS) $(OBJFILE) -o $@ $(FFTFLAG)

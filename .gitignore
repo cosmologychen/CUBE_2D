@@ -15,4 +15,5 @@ output/
 *.log
 *.npy
 *.mod
-.DS_Store
+.DS_Store*.ipynb
+__pycache__/

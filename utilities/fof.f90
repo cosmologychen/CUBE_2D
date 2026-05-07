@@ -2,20 +2,23 @@ program CUBE_FoF
   use parameters
   implicit none
 
+  real,parameter :: b_link=0.20 ! linking length for FoF
+  real,parameter :: np_halo_min=2 ! minimum number of particles to be a halo
   real,parameter :: density = 2.5
+
   integer(4) ij(2,n_neighbor)
   integer(8) i,j,l,cur_checkpoint,ip,ip1,ip2,i_neighbor,idl(2),iq(2)
   integer(8),allocatable :: hoc(:,:),ll(:),llgp(:),hcgp(:),ecgp(:),iph_halo_all(:),iph_halo(:)
 
-  integer(8) np,number_halo
+  integer(8) np
   real(4),allocatable :: xv(:,:)
 
-  integer np_head,np_iso,np_mem,halo_np
+  integer np_head,np_iso,np_mem,halo_np,number_halo
   real(4) xp_mean(2),xpos(2),qp_mean(2)
 
   real r2,link2
 
-  open(16,file='../z_checkpoint.txt',status='old')
+  open(16,file='./z_checkpoint.txt',status='old')
   do i=1,nmax_redshift-1
     read(16,end=71,fmt='(f8.4)') z_checkpoint(i)
   enddo
@@ -38,12 +41,6 @@ program CUBE_FoF
   enddo
 
   link2 = b_link**2
-  ! print*, 'link2 =',link2
-  ! do i_neighbor = 1,n_neighbor
-  !   print*,ij(:,i_neighbor)
-  ! enddo
-  ! stop
-
 
   do cur_checkpoint= 5,5!1,n_checkpoint
     sim%cur_checkpoint=cur_checkpoint
@@ -105,22 +102,8 @@ program CUBE_FoF
     print*,'fof done'
 
 
-    ! np_iso=0; np_mem=0; np_head=0;
-    ! do i=1,sim%np
-    !   if (hcgp(i)==i) then
-    !     np_iso=np_iso+1
-    !   elseif (hcgp(i)==0) then
-    !     np_mem=np_mem+1
-    !   else
-    !     np_head=np_head+1
-    !   endif
-    ! enddo
-    ! print*,'N_iso,mem,head =',np_iso,np_mem,np_head
-
-    ! ! stop
-
     allocate(iph_halo_all(sim%np),iph_halo(sim%np))
-    np_iso = 0; np_head = 0
+    np_iso = 0; np_head = 0; iph_halo=0
     do i=1,sim%np
       if (hcgp(i)==i) then
         np_iso=np_iso+1
@@ -145,25 +128,33 @@ program CUBE_FoF
 
     call indexed_sort(np_head,-iph_halo(:np_head),ecgp(:np_head))
 
-    number_halo = min((density*1e-4)**(2/3)*box*box,real(np_head))
-    print*, 'number_halo',number_halo,iph_halo(ecgp(1))
+    number_halo = min((density*1e-5)**(2/3)*box*box,real(np_head))
+    print*, 'number_halo',number_halo,(density*1e-5)**(2/3)*box*box,real(np_head)
 
     open(11,file=output_name('halo'),status='replace',access='stream')
     open(12,file=output_name('halo_xp_mean_only'),status='replace',access='stream')
     open(13,file=output_name('halo_qp_mean_only'),status='replace',access='stream')
-    write(11) b_link,np_halo_min,np_head
+    write(11) b_link,np_halo_min,number_halo
     do j=1,number_halo
       i = ecgp(j)
-      print*, j,'halo', i
-      ip1 = iph_halo_all(i)
+      ip2 = iph_halo_all(i)
       halo_np = iph_halo(i)
+      write(11) halo_np
+
+      ip1 = iph_halo_all(i)
+      do while (ip1 /= 0)
+        write(11) ip1
+        ip1 = llgp(ip1)
+      enddo
+
+      ip1 = iph_halo_all(i)
       xp_mean = 0
       do while (ip1 /= 0)
-        xp_mean = xp_mean + xv(1:2,ip1)
+        xp_mean = xp_mean + pbc_vec(xv(1:2,ip1)-xv(1:2,ip2))
         write(11) xv(1:2,ip1)
         ip1 = llgp(ip1)
       enddo
-      xp_mean = xp_mean / halo_np
+      xp_mean = wrap_position2(xp_mean / halo_np + xv(1:2,ip2))
 
       ip1 = iph_halo_all(i)
       qp_mean = 0
@@ -172,23 +163,25 @@ program CUBE_FoF
         iq(2)=modulo(ip1-1,int(ng,4))
         xpos=iq+0.5
         qp_mean = qp_mean + pbc_vec(xpos-xp_mean)
-        write(11) xv(1:2,ip1)
+        write(11) xpos
         ip1 = llgp(ip1)
       enddo
       qp_mean = wrap_position2(qp_mean / halo_np + xp_mean)
-      write(11) halo_np
+
       write(11) xp_mean
+      write(11) qp_mean
       write(12) xp_mean
       write(13) qp_mean
 
-      print*,iph_halo_all(i), 'np', halo_np, 'xp_mean', xp_mean
+      ! print*,iph_halo_all(i), 'np', halo_np, 'xp_mean', xp_mean
     enddo
+    write(11)
     close(11)
     close(12)
     close(13)
 
     deallocate(xv,ll,llgp,hcgp,ecgp,hoc)
-    print*,output_name('halo_xp_mean')
+    print*,output_name('halo')
 
   enddo
 

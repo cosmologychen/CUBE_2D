@@ -69,104 +69,59 @@ if (1):
     omega_r=match_para('omega_r')
     omk=0.0
 
-    file_path = './parameters.f90'
-    with open(file_path, 'r') as file:
-        content = file.read()
-
-    # 使用正则表达式匹配模式
-    pattern = r'parameter\s*::\s*%s\s*=*([^\s]+)'%'m_nu'
-    match = re.search(pattern, content)
-
-    if match:
-        m_nus = match.group(1).strip()
-        str_cleaned = m_nus.replace("[", "").replace("]", "").replace(",", " ")
-        m_nus = np.array(str_cleaned.split(), dtype=float)
-    else:
-        print("Pattern not found in the file.")
-        sys.exit()
-
-    mnu=m_nus.sum()
-    if (mnu>0) :
-        if (np.all(m_nus == m_nus[0])):
-            neutrino_hierarchy = 'degenerate'
-            num_massive_neutrinos=3
-        elif (m_nus[0] < m_nus[2]):
-            neutrino_hierarchy = 'normal'
-            num_massive_neutrinos=3
-        elif (m_nus[0] > m_nus[2]):
-            neutrino_hierarchy = 'inverted'
-            num_massive_neutrinos=2
-    else:
-        neutrino_hierarchy = 'degenerate'
-        num_massive_neutrinos=0
-    nnu=3.044
-    standard_neutrino_neff=match_para('N_eff')
-    ns=match_para('n_s')
-    As=match_para('A_s')
+    m_nus = np.array([0.0, 0.0, 0.0])
+    mnu = 0.0
+    neutrino_hierarchy = 'degenerate'
+    num_massive_neutrinos = 0
+    nnu = 3.044
+    standard_neutrino_neff = 0
+    ns = match_para('n_s')
+    As = match_para('A_s')
     z_max = np.atleast_1d(np.loadtxt('./z_checkpoint.txt'))[0]
 
-    pi=np.pi
-    ratio_cs=match_para('ratio_cs')
+    pi = np.pi
+    ratio_cs = match_para('ratio_cs')
     ng = match_para('ng')
     box = match_para('box')
     nnt = match_para('nnt')
-    nn = match_para('nn')
+    # nn = match_para('nn')
     ngp = ng/nnt
     ngb = match_para('ngb')
     istep_max = match_para('istep_max')
-    ngt=ngp+2*ngb 
-    cic_iapm = 5-1#int(match_para('cic_iapm'))-1
-    tile = box/nn/nnt*ngt/ngp
-    nw = ng/ratio_cs
-    nw_global=nw*nn
-    nyquist=nw_global/2
-    ncbin = int(nyquist*np.sqrt(3.))+1
-    nnbin= int(ngt/2*np.sqrt(3.))+1
-    npbin  = ncbin+nnbin+21
-    kmin = 2*pi/box
-    kmax = 2*pi/(box/nn/nnt/ngp*2/np.sqrt(3))
+    ngt = ngp+2*ngb 
+    npbin  = 400
+    kmin = 1e-4
+    kmax = 20
     ombh2 = omega_bar*(H0/100)**2
     omch2 = omega_cdm*(H0/100)**2
 
     sigma_nu = (4/11)**(1/3)
     N_nu = 3
-    N_eff = standard_neutrino_neff
+    N_eff = 0
     k_b = 8.617342e-5
     T_gama = 2.7255
-    Mass_nu = mnu
+    Mass_nu = 0.0
     omega_m = omega_bar+omega_cdm
-    omega_cb = omega_bar+omega_cdm-Mass_nu/93.14/((H0/100)**2)
+    omega_cb = omega_bar+omega_cdm
     omega_l = 1-omega_bar-omega_cdm-omega_r
-    f_nu = Mass_nu/93.14/((H0/100)**2)/omega_m
+    f_nu = 0.0
+    
     omHsq = 2/3*np.sqrt(1/omega_m)/H0
-
 
     file_path = './parameters.f90'
     with open(file_path, 'r') as file:
         content = file.read()
-
-    # 使用正则表达式匹配模式
     pattern = r'parameter\s*::\s*opath\s*=\s*([^\s]+)'
     match = re.search(pattern, content)
     opath = os.path.expanduser(match.group(1).strip()[1:-1])
     print(f"Variable value of opath : {opath}")
-    nupath =  opath+"neutrinos"
+    nupath = opath+"neutrinos"
     print(f"Variable value of nupath : {nupath}")
     print('\n'+('+'*40+'\n')*2)
-    print('Cosmology  Paras:\n\n   omega_r:   %.6f\n   omega_b:   %.6f\n   omega_c:   %.6f\n   omega_l:   %.6f\n   mass_nu:   %.3f              eV\n  mass_nus:   %.3f %.3f %.3f  eV\n      f_nu:   %.6f\n\n'%(omega_r,omega_bar,omega_cdm,omega_l,Mass_nu,m_nus[0],m_nus[1],m_nus[2],f_nu))
-    print('Simulation Paras:\n\n     npbin:   %d\n     ncbin:   %d\n     nnbin:   %d\n      kmin:   %.3f\n      kmax:   %.3f\n\n\n'%(npbin,ncbin,nnbin,kmin,kmax))
+    print('2D Pure CDM Cosmology Paras:\n\n   omega_r:   %.6f\n   omega_b:   %.6f\n   omega_c:   %.6f\n   omega_l:   %.6f\n   mass_nu:   %.3f              eV\n      f_nu:   %.6f\n\n'%(omega_r,omega_bar,omega_cdm,omega_l,Mass_nu,f_nu))
+    print('Simulation Paras:\n\n     npbin:   %d\n      kmin:   %.3f\n      kmax:   %.3f\n\n\n'%(npbin,kmin,kmax))
 
-
-
-    kh_nonlin = np.concatenate((np.array([1.0, 1.4142135623730951, 1.7320508075688772, 2.0, 
-                                        2.23606797749979, 2.449489742783178, 2.8284271247461903, 
-                                        3.0, 3.1622776601683795, 3.3166247903554, 3.4641016151377544, 
-                                        3.605551275463989, 3.7416573867739413, 4.0, 4.123105625617661, 
-                                        4.242640687119285, 4.358898943540674, 4.47213595499958, 
-                                        4.58257569495584, 4.69041575982343, 4.898979485566356, 
-                                        5.0, 5.0990195135927845, 5.196152422706632, 5.385164807134504, 
-                                        5.477225575051661]) * 2 * np.pi / box
-                                , np.exp(np.linspace(np.log(6*kmin), np.log(kmax),  npbin - 26))))
+    kh_nonlin = np.exp(np.linspace(np.log(6*kmin), np.log(kmax),  npbin))
 
 
 # print(kh_nonlin.shape)
@@ -238,32 +193,62 @@ def Hz(z):
 def taua(a):
     z=1/a-1
     return integrate.quad(lambda z0: 1/Hz(z0), z,10000)[0]
+
+def growth_integrand(a_prime):
+    # 避免 a=0 时的除零奇点
+    return 1.0 / (a_prime * Ha(a_prime))**3
+
+# 计算 a=0 到 a=1 的全量积分 (1e-8 代替 0 避免奇点)
+I_1, _ = integrate.quad(growth_integrand, 1e-8, 1.0)
+# 归一化常数，确保 D(a=1) = 1.0
+Norm_D = 1.0 / (Ha(1.0) * I_1) 
+# 初始化积分累加器
+I_current = I_1
 T1 = time.time()
 
 print('calculating Expansion History')
 n_a = int(istep_max)
-dt0 = 5e-4
+dt0 = 5e-3
 t = -np.arange(n_a)*dt0
-H_ex = np.ones(n_a)*H0
+c = 2997.92458  # 光速，单位 100km/s
+chi_ex = np.zeros(n_a)
 tau = np.ones(n_a)
 a_ex = np.zeros(n_a)
+D_growth = np.zeros(n_a)
+D_growth[0] = 1.0
 a_ex[0] = 1
 tau[0] = taua(1)
+chi_ex[0] = 0.0  # 初始共动距离为0
+Hai_next = Ha(a_ex[0])
 for i in range(n_a-1):
-    Hai = Ha(a_ex[i])
-    H_ex[i] = Hai
+    Hai = Hai_next
     a_ex[i+1] = -omHsq*Hai*a_ex[i]**3 * dt0 +a_ex[i]
     dz = 1/a_ex[i]-1/a_ex[i+1]
     tau[i+1]  = tau[i]+(1/Hz(1/a_ex[i]-1)+2/Hz(1/a_ex[i]-1+dz)+2/Hz(1/a_ex[i+1]-1-dz)+1/Hz(1/a_ex[i+1]-1))*dz/6
+    # 计算共动距离 chi，使用公式 dchi = -c/a * dt
+    chi_ex[i+1] = chi_ex[i] + c * a_ex[i] * dt0
+    # D_growth = 
+    Hai_next = Ha(a_ex[i+1])
+    da = a_ex[i] - a_ex[i+1]  # 注意 da 是正数 (因为 a 正在减小)
+    
+    # 用梯形法则计算这一小步 da 造成的积分面积减少量
+    integrand_i = 1.0 / (a_ex[i] * Hai)**3
+    integrand_next = 1.0 / (a_ex[i+1] * Hai_next)**3
+    dI = 0.5 * (integrand_i + integrand_next) * da
+    
+    # 从总积分中扣除这一小段
+    I_current = I_current - dI  
+    
+    # 乘上前面的 H(a) 和归一化常数，得到这步的 D(a)
+    D_growth[i+1] = Norm_D * Hai_next * I_current
 
-    if (a_ex[i+1]<=1./301 or np.isnan(a_ex[i+1])):
+    if (a_ex[i+1]<=1./30001 or np.isnan(a_ex[i+1])):
         break
 i_end = i
 T2 = time.time()
 tau[-1] = taua(1/201)
-# tau = 299792.458*tau
 os.system('rm '+nupath+'/*.txt')
-np.savetxt(nupath+'/s_a_tau_H.txt',np.array([t,a_ex,tau,H_ex]))
+np.savetxt(nupath+'/s_a_tau_H.txt',np.array([t,a_ex,tau,chi_ex,D_growth]))
 print("EH:\n\n      time:   %.2f seconds\n      step:   %d\n      save:   '%s'\n\n\n"%(T2-T1,i_end,nupath+'/s_a_tau_H.txt'))
 
 print('get Pk')

@@ -6,10 +6,12 @@ OPTIONS+=-DPID
 MODEFILE:=$(wildcard *.f90)
 OBJFILE:=$(addprefix ,$(notdir $(MODEFILE:.f90=.o)))
 
-all: ic.x density_power.x dsp.x DTFE_dsp.x fof.x DT_void.x void.x# fof_merge.x #write_gadget_format.x 
+all: ic.x density_power.x dsp.x test_lc_geom.x lightcone.x #DTFE_dsp.x fof.x DT_void.x void.x # fof_merge.x #write_gadget_format.x 
 	@echo "made:" $^
 ic.x: ic.o parameters.o
 	$(FC) $(XFLAG) $(OPTIONS) $(FFTFLAG) $^ -o $@
+test_lc_geom.x: test_lc_geom.o parameters.o
+	$(FC) $(XFLAG) $(OPTIONS) $^ -o $@
 fof.x: fof.o parameters.o
 	$(FC) $(XFLAG) $(OPTIONS) $(FFTFLAG) $^ -o $@
 DT_void.x: DT_void.o parameters.o
@@ -21,6 +23,8 @@ density_power.x: density_power.o parameters.o powerspectrum.o
 dsp.x: parameters.o displacement.o powerspectrum.o
 	$(FC) $(XFLAG) $(OPTIONS) $(FFTFLAG) $^ -o $@
 DTFE_dsp.x: parameters.o displacement_DTFE.o powerspectrum.o
+	$(FC) $(XFLAG) $(OPTIONS) $(FFTFLAG) $^ -o $@
+lightcone.x: lightcone.o parameters.o
 	$(FC) $(XFLAG) $(OPTIONS) $(FFTFLAG) $^ -o $@
 
 parameters.o: Makefile ../basic_functions.f08
@@ -43,6 +47,10 @@ displacement.o: displacement.f90 Makefile parameters.o powerspectrum.o
 	$(FC) $(OFLAG) $(OPTIONS) $(FFTFLAG) $< -o $@
 displacement_DTFE.o: displacement_DTFE.f90 Makefile parameters.o powerspectrum.o
 	$(FC) $(OFLAG) $(OPTIONS) $(FFTFLAG) $< -o $@
+lightcone.o: lightcone.f90 Makefile parameters.o
+	$(FC) $(OFLAG) $(OPTIONS) $(FFTFLAG) $< -o $@
+test_lc_geom.o: test_lc_geom.f90 Makefile parameters.o
+	$(FC) $(OFLAG) $(OPTIONS) $< -o $@
 
 *.o: Makefile
 

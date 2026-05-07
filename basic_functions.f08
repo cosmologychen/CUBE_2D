@@ -32,7 +32,7 @@ function output_name_step(zipname)
   character(:),allocatable :: output_name_step
   character(20) :: str_z
   write(str_z,'(i4)') istep
-  output_name_step=opath//'/runtime/'//zipname//'_'//trim(adjustl(str_z))//'.bin'
+  output_name_step=opath//'runtime/'//zipname//'_'//trim(adjustl(str_z))//'.bin'
 endfunction
 
 function output_name_ng(zipname)
